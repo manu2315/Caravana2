@@ -42,7 +42,13 @@
         <activity
             android:name=".ui.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.TabActivity"
+            android:label="@string/title_activity_tab" />
+        <activity
+            android:name=".ui.ScrollActivity"
+            android:label="@string/title_activity_scroll"></activity>
     </application>
 
 </manifest>
