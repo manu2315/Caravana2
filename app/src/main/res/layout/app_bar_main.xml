@@ -45,6 +45,7 @@
     <include layout="@layout/content_main" />
 
     <include layout="@layout/activity_scroll"/>
+    <include layout="@layout/activity_tab"/>
     <!--FloatinButton del Drawable-->
     <!--<android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
