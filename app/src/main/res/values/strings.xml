@@ -22,6 +22,36 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_scroll">ScrollActivity</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="prospect_data_text">Datos del Cliente</string>
+    <string name="prospect_name">Nombre</string>
+    <string name="prospect_father_lastname">Apellido Paterno</string>
+    <string name="prospect_mother_lastname">Apellido Materno</string>
+    <string name="prospect_birthdate">Fecha de nacimiento</string>
+    <string name="prospect_rfc">RFC</string>
+    <string name="prospect_genere">Género</string>
+    <string name="prospect_address_principal_street">Dirección calle</string>
+    <string name="prospect_ex">Dirección calle</string>outdoor_number
+    <string name="prospect_outdoor_number">No.Exterior</string>
+    <string name="prospect_indoor_number">No.Interior</string>
+    <string name="prospect_postal_code">C.P.</string>
+    <string name="prospect_colony">Colonia</string>
+    <string name="prospect_email">Correo Electrónico</string>
+    <string name="prospect_telephone_type">Tipo de Teléfono</string>
+    <string name="prospect_telephone">Teléfono </string>
+    <string name="prospect_cellphone">Celular </string>
+    <string name="prospect_locationDays_for_all">Toda la semana</string>
+    <string name="generate_file">Generar Reporte</string>
+    <string name="others">Otros</string>
+    <string name="add_prospects">Agregar Prospectos</string>
+    <string name="initial_location_time">Hora Inicial de Localización</string>
+    <string name="final_location_time">Hora Final de Localización</string>
+    <string name="experience_in_group_credit">Experiencia en crédito grupal</string>
+    <string name="campaign">Campaña</string>
+    <string name="status">Estatus</string>
+
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -111,6 +141,9 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!--PROBLEMA SIN PERMISOS FIN-->
 
 </resources>
