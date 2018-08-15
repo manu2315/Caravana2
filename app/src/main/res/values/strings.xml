@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">Caravana</string>
     <string name="legal">Esta información es propiedad de FINANCIERA FINSOL S.A. de C.V., SOFOM, E.N.R. y es considerada de carácter CONFIDENCIAL, por lo tanto cualquier uso indebido o no autorizado de la misma, será considerada como responsabilidad total y absoluta del causante.</string>
+    <!--PROBLEMA SIN CONTENIDO DIALOGO INICIO-->
+    <string name="dialog_sin_contenido">Problema de contenido, el item seleccionado no contiene información a mostrar</string>
+    <!--PROBLEMA SIN CONTENIDO DIALOGO FIN-->
+    <!--INTERNET PROBLEM DIALOG START-->
+    <string name="dialog_internet_problem_message">Problema de conexión, por favor verifica tu conexión a internet e intenta nuevamente</string>
+    <string name="dialog_internet_problem_positive_button_label">Aceptar</string>
+    <!--INTERNET PROBLEM DIALOG END-->
+    <!--PROBLEMA SIN PERMISOS-->
+    <string name="dialog_sin_permisos">Problema de autentificación, no cuentas con autorización</string>
+    <!--PROBLEMA SIN PERMISOS FIN-->
+
 </resources>
