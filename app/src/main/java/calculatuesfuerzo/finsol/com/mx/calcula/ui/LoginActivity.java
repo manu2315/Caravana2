@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.button2)
+        if (i == R.id.btnLogin)
         {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) ==
                     PackageManager.PERMISSION_GRANTED &&
