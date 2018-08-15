@@ -1,0 +1,103 @@
+{
+  "project_info": {
+    "project_number": "470944894522",
+    "firebase_url": "https://calcula-tu-esfuerzo-test.firebaseio.com",
+    "project_id": "calcula-tu-esfuerzo-test",
+    "storage_bucket": "calcula-tu-esfuerzo-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470944894522:android:d8a99a759b8efa98",
+        "android_client_info": {
+          "package_name": "calculatuesfuerzo.finsol.com.mx.calcula"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "470944894522-lm5ceqppnag8u8i0lfu5aqu75r2u9huv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "calculatuesfuerzo.finsol.com.mx.calcula",
+            "certificate_hash": "1a2a70cb7e0c5ecd2055a0f242cd9f2beec9f1e9"
+          }
+        },
+        {
+          "client_id": "470944894522-cjk0qf1ufp2b05q6qkrkpquanf9cgshm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "calculatuesfuerzo.finsol.com.mx.calcula",
+            "certificate_hash": "ebafe31fa76dcbb307110397c1ba3b7b42c46dac"
+          }
+        },
+        {
+          "client_id": "470944894522-ta1p2t47m1kgglgh1i1vutq7qkbgbldk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "calculatuesfuerzo.finsol.com.mx.calcula",
+            "certificate_hash": "cc7371f549b6b3a1eb6d973bfcae396415ce117e"
+          }
+        },
+        {
+          "client_id": "470944894522-fvvlu3hq32lh3jp4hes5ue0c2d21e718.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "calculatuesfuerzo.finsol.com.mx.calcula",
+            "certificate_hash": "7c27a3678bf7f66fc00191922fdc044cc4ecb4f5"
+          }
+        },
+        {
+          "client_id": "470944894522-vaidjgg3baj877c0ut58kl4tm3g2u8md.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "calculatuesfuerzo.finsol.com.mx.calcula",
+            "certificate_hash": "44048d705c1675105141a81e4f086c350148e2cf"
+          }
+        },
+        {
+          "client_id": "470944894522-eo809p2l78n9f831g7mqpoaid6sa4q7j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "calculatuesfuerzo.finsol.com.mx.calcula",
+            "certificate_hash": "aeed1d2013cdb8155b8125990f14bf4d7457a55b"
+          }
+        },
+        {
+          "client_id": "470944894522-6pakh7st9989077bhkttohq3tc6f6u3q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "calculatuesfuerzo.finsol.com.mx.calcula",
+            "certificate_hash": "5ec0e75781d7e84b6a01bdf0a8605f8dc580f954"
+          }
+        },
+        {
+          "client_id": "470944894522-of322cde8h8mcudku97rkfa2s6sb31s6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA404STu2fb5ZfyA6QMWWhQkTMcJUsBFA0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "470944894522-of322cde8h8mcudku97rkfa2s6sb31s6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
