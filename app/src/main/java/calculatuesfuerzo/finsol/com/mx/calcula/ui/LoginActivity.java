@@ -229,7 +229,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         getUserModel(new UserSingleton.Callback() {
                             @Override
                             public void modelReady(UserModel userModel) {
-                                Intent i = new Intent(LoginActivity.this, MainActivity.class );
+                                Intent i = new Intent(LoginActivity.this, ScrollingActivity.class );
                                 i.putExtra("USER_MODEL",userModel) ;
                                 startActivity(i);
                                 finish();

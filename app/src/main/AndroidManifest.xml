@@ -38,7 +38,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.LoginActivity"></activity>
+        <activity android:name=".ui.LoginActivity" />
+        <activity
+            android:name=".ui.ScrollingActivity"
+            android:label="@string/title_activity_scrolling"></activity>
     </application>
 
 </manifest>
