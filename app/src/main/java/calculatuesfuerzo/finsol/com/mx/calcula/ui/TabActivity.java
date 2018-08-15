@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import calculatuesfuerzo.finsol.com.mx.calcula.R;
+
 public class TabActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
