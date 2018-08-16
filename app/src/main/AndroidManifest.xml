@@ -48,7 +48,11 @@
             android:label="@string/title_activity_tab" />
         <activity
             android:name=".ui.ScrollActivity"
-            android:label="@string/title_activity_scroll"></activity>
+            android:label="@string/title_activity_scroll" />
+        <activity
+            android:name=".ui.StepperActivity"
+            android:label="@string/title_activity_stepper"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

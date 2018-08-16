@@ -1,6 +1,7 @@
 package calculatuesfuerzo.finsol.com.mx.calcula.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
@@ -12,6 +13,8 @@ import com.stepstone.stepper.adapter.AbstractFragmentStepAdapter;
 import com.stepstone.stepper.viewmodel.StepViewModel;
 
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.MainActivity;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.StepperActivity;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.Test1Fragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.Test2Fragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.Test3Fragment;
@@ -138,4 +141,5 @@ public  class MyStepperAdapter extends AbstractFragmentStepAdapter {
         }
         return null;*/
     }
+
 }

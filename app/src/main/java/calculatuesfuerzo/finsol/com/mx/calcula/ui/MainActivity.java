@@ -1,5 +1,7 @@
 package calculatuesfuerzo.finsol.com.mx.calcula.ui;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
@@ -20,9 +22,10 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.Test1Fragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,Test1Fragment.OnFragmentInteractionListener {
 
 
     //INICIO VARIABLES
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bindUI();
+        setFragmentByDefault();
 
         //Pruebas
         /*
@@ -112,15 +116,17 @@ public class MainActivity extends AppCompatActivity
         //HomeFragment fragment = new HomeFragment();
         //Metodo para utilzarse con el menu de sandwich MenuItem item
         //changeFragment(fragment, navigationView.getMenu().getItem(0));
+        Test1Fragment fragment = new Test1Fragment();
+        changeFragment(fragment);
+        changeFragment(fragment);
     }
     //Metodo para utilzarse con el menu de sandwich MenuItem item
-    private void changeFragment(Fragment fragment, MenuItem item) {
-
-
+    //private void changeFragment(Fragment fragment, MenuItem item) {
+    private void changeFragment(Fragment fragment) {
         //Intentarlo con content_main en el layout principal
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame_step, fragment).commit();
         //idFm=getSupportFragmentManager().getBackStackEntryCount();
-        item.setCheckable(true);
+        //item.setCheckable(true);
         //getSupportActionBar().setTitle(item.getTitle());
         getSupportActionBar().setTitle("Datos del Cliente");
         drawer.closeDrawers();
@@ -140,7 +146,7 @@ public class MainActivity extends AppCompatActivity
     //Metodos genericos
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_step);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         }else if(getSupportFragmentManager().getBackStackEntryCount()>0){
@@ -187,6 +193,10 @@ public class MainActivity extends AppCompatActivity
                 case R.id.navigation_home:
                     return true;
                 case R.id.add_prospect:
+                    Intent i = new Intent(MainActivity.this, StepperActivity.class );
+                    //i.putExtra("USER_MODEL",userModel) ;
+                    startActivity(i);
+                    finish();
                     return true;
                 case R.id.reports:
                     return true;
@@ -245,8 +255,18 @@ public class MainActivity extends AppCompatActivity
 
                 */
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_step);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void backToMain() {
+
     }
 }

@@ -1,6 +1,7 @@
 package calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,6 +18,8 @@ import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.MainActivity;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.StepperActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -117,7 +120,9 @@ public class Test1Fragment extends Fragment implements BlockingStep {
 
     @Override
     public void onBackClicked(StepperLayout.OnBackClickedCallback callback) {
-        callback.goToPrevStep();
+        //callback.goToPrevStep();
+        mListener.backToMain();
+
     }
 
 
@@ -150,5 +155,6 @@ public class Test1Fragment extends Fragment implements BlockingStep {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+        void backToMain();
     }
 }

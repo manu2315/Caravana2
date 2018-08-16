@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    tools:showIn="@layout/app_bar_stepper">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,8 +19,22 @@
             android:id="@+id/content_frame_step"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <include layout="@layout/stepper_layout"/>
         </FrameLayout>
 
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
+<!--
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ui.StepperActivity"
+    tools:showIn="@layout/app_bar_stepper">
+
+</android.support.constraint.ConstraintLayout>-->
