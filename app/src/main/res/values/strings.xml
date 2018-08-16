@@ -51,6 +51,8 @@
     <string name="experience_in_group_credit">Experiencia en crédito grupal</string>
     <string name="campaign">Campaña</string>
     <string name="status">Estatus</string>
+    <string name="meta">Meta</string>
+    <string name="carrera">Carrera</string>
 
     <string name="large_text">
         "Material is the metaphor.\n\n"
