@@ -43,7 +43,7 @@ dependencies {
     //Adicionales
     implementation 'com.stepstone.stepper:material-stepper:4.3.1'
     implementation 'com.hendraanggrian:collapsingtoolbarlayout-subtitle:27.1.0'
-
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

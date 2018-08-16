@@ -1,7 +1,10 @@
 package calculatuesfuerzo.finsol.com.mx.calcula.ui;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
@@ -19,10 +22,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import java.io.IOException;
+import java.net.URL;
 
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.Test1Fragment;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,Test1Fragment.OnFragmentInteractionListener {
@@ -45,15 +56,21 @@ public class MainActivity extends AppCompatActivity
     //fragments
     public android.app.FragmentManager fragmentManager;
     int idFm;
-
-
+    //Navigation Header
+    private String mail;
+    //ImageView imageViewUser;
+    CircleImageView imageViewUser;
+    TextView textViewUserMail;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bindUI();
+        getPhotoUser() ;
         setFragmentByDefault();
+
 
         //Pruebas
         /*
@@ -90,6 +107,18 @@ public class MainActivity extends AppCompatActivity
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         //FIN TAB ACTIVITY
+
+        //Navigation
+
+        user= FirebaseAuth.getInstance().getCurrentUser();
+        mail=user.getEmail();
+        //NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        //TextView navUsername = (TextView) headerView.findViewById(R.id.navUsername);
+        //navUsername.setText("Your Text Here");
+        imageViewUser =(CircleImageView) headerView.findViewById(R.id.imageViewUser);
+        textViewUserMail=(TextView) headerView.findViewById(R.id.textViewUser);
+        textViewUserMail.setText(mail);
     }
 
     private void expand(){
@@ -143,6 +172,40 @@ public class MainActivity extends AppCompatActivity
         transaction.replace(R.id.content_frame,fragment).addToBackStack(null).commit();
     }
      */
+
+    public void getPhotoUser(){
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user!=null){
+            Uri photoUrl = user.getPhotoUrl();
+            new DownloadImageTask().execute(photoUrl);
+        }
+    }
+
+    private class DownloadImageTask extends AsyncTask<Uri, Void, Bitmap> {
+
+        protected Bitmap doInBackground(Uri... uris) {
+            Uri photoUrl = uris[0];
+            Bitmap bmp = null;
+            try {
+                URL url = new URL(photoUrl.toString());
+                bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return bmp;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            if(result!=null){
+                //imageUser = mBinding.getRoot().findViewById(R.id.circle_image);
+                //imageUser.setImageBitmap(result);
+
+                imageViewUser.setImageBitmap(result);
+
+            }
+        }
+    }
     //Metodos genericos
     @Override
     public void onBackPressed() {
