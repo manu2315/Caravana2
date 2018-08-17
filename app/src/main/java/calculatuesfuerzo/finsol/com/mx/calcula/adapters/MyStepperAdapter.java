@@ -15,6 +15,7 @@ import com.stepstone.stepper.viewmodel.StepViewModel;
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.MainActivity;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.StepperActivity;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientDataFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.Test1Fragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.Test2Fragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.Test3Fragment;
@@ -30,7 +31,11 @@ public  class MyStepperAdapter extends AbstractFragmentStepAdapter {
     public Step createStep(int position) {
         switch (position){
             case 0:
-                final Test1Fragment step1 = new Test1Fragment();
+                /*final Test1Fragment step1 = new Test1Fragment();
+                Bundle b1 = new Bundle();
+                b1.putInt(CURRENT_STEP_POSITION_KEY, position);
+                step1.setArguments(b1);*/
+                final ClientDataFragment step1= new ClientDataFragment();
                 Bundle b1 = new Bundle();
                 b1.putInt(CURRENT_STEP_POSITION_KEY, position);
                 step1.setArguments(b1);
@@ -69,17 +74,17 @@ public  class MyStepperAdapter extends AbstractFragmentStepAdapter {
                 builder.setTitle("Cliente")
                         .setEndButtonLabel("Siguiente")
                         .setBackButtonLabel("Cancelar")
-                        .setBackButtonVisible(true);
-                       /* .setNextButtonEndDrawableResId(R.drawable.ic_arrow_forward_24dp)
-                        .setBackButtonStartDrawableResId(StepViewModel.NULL_DRAWABLE);*/
+                        .setBackButtonVisible(true)
+                        .setNextButtonEndDrawableResId(R.drawable.ic_arrow_forward_24dp)
+                        .setBackButtonStartDrawableResId(StepViewModel.NULL_DRAWABLE);
 
                 break;
             case 1:
                 builder.setTitle("Dirección")
                         .setEndButtonLabel("Siguiente")
-                        .setBackButtonLabel("Volver");
-                       /* .setNextButtonEndDrawableResId(R.drawable.ic_chevron_right_24dp)
-                        .setBackButtonStartDrawableResId(R.drawable.ic_arrow_back_24dp);*/
+                        .setBackButtonLabel("Volver")
+                        .setNextButtonEndDrawableResId(R.drawable.ic_chevron_right_24dp)
+                        .setBackButtonStartDrawableResId(R.drawable.ic_arrow_back_24dp);
 
                 break;
             case 2:

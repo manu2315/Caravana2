@@ -24,12 +24,13 @@ import com.stepstone.stepper.VerificationError;
 
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
 import calculatuesfuerzo.finsol.com.mx.calcula.adapters.MyStepperAdapter;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientDataFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.Test1Fragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.Test2Fragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.Test3Fragment;
 
 public class StepperActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,StepperLayout.StepperListener, Test1Fragment.OnFragmentInteractionListener,
+        implements NavigationView.OnNavigationItemSelectedListener,StepperLayout.StepperListener, ClientDataFragment.OnFragmentInteractionListener,
         Test2Fragment.OnFragmentInteractionListener,Test3Fragment.OnFragmentInteractionListener {
 
     //SubtitleCollapsingToolbar
