@@ -15,10 +15,11 @@ import com.stepstone.stepper.viewmodel.StepViewModel;
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.MainActivity;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.StepperActivity;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientAdditionalDataFragment;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientAddressFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientDataFragment;
-import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.Test1Fragment;
-import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.Test2Fragment;
-import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.Test3Fragment;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientTelephoneFragment;
+
 
 public  class MyStepperAdapter extends AbstractFragmentStepAdapter {
 
@@ -31,27 +32,29 @@ public  class MyStepperAdapter extends AbstractFragmentStepAdapter {
     public Step createStep(int position) {
         switch (position){
             case 0:
-                /*final Test1Fragment step1 = new Test1Fragment();
-                Bundle b1 = new Bundle();
-                b1.putInt(CURRENT_STEP_POSITION_KEY, position);
-                step1.setArguments(b1);*/
                 final ClientDataFragment step1= new ClientDataFragment();
                 Bundle b1 = new Bundle();
                 b1.putInt(CURRENT_STEP_POSITION_KEY, position);
                 step1.setArguments(b1);
                 return step1;
             case 1:
-                final Test2Fragment step2 = new Test2Fragment();
+                final ClientAddressFragment step2 = new ClientAddressFragment();
                 Bundle b2 = new Bundle();
                 b2.putInt(CURRENT_STEP_POSITION_KEY, position);
                 step2.setArguments(b2);
                 return step2;
             case 2:
-                final Test3Fragment step3 = new Test3Fragment();
+                final ClientTelephoneFragment step3 = new ClientTelephoneFragment();
                 Bundle b3 = new Bundle();
                 b3.putInt(CURRENT_STEP_POSITION_KEY, position);
                 step3.setArguments(b3);
                 return step3;
+            case 3:
+                final ClientAdditionalDataFragment step4 = new ClientAdditionalDataFragment();
+                Bundle b4 = new Bundle();
+                b4.putInt(CURRENT_STEP_POSITION_KEY, position);
+                step4.setArguments(b4);
+                return step4;
 
         }
         return null;
@@ -59,7 +62,7 @@ public  class MyStepperAdapter extends AbstractFragmentStepAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 4;
     }
 
     @NonNull
@@ -89,10 +92,18 @@ public  class MyStepperAdapter extends AbstractFragmentStepAdapter {
                 break;
             case 2:
                 builder.setTitle("Teléfono")
+                        .setEndButtonLabel("Siguiente")
+                        .setBackButtonLabel("Volver")
+                        .setNextButtonEndDrawableResId(R.drawable.ic_chevron_right_24dp)
+                        .setBackButtonStartDrawableResId(R.drawable.ic_arrow_back_24dp);
+
+                break;
+            case 3:
+                builder.setTitle("Adicional")
                         .setEndButtonLabel("Completar")
-                        .setBackButtonLabel("Volver");
-                        /*.setNextButtonEndDrawableResId(StepViewModel.NULL_DRAWABLE)
-                        .setBackButtonStartDrawableResId(R.drawable.ic_arrow_back_24dp);*/
+                        .setBackButtonLabel("Volver")
+                        .setNextButtonEndDrawableResId(StepViewModel.NULL_DRAWABLE)
+                        .setBackButtonStartDrawableResId(R.drawable.ic_arrow_back_24dp);
 
                 break;
             default:

@@ -24,14 +24,15 @@ import com.stepstone.stepper.VerificationError;
 
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
 import calculatuesfuerzo.finsol.com.mx.calcula.adapters.MyStepperAdapter;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientAdditionalDataFragment;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientAddressFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientDataFragment;
-import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.Test1Fragment;
-import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.Test2Fragment;
-import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.Test3Fragment;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientTelephoneFragment;
+
 
 public class StepperActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,StepperLayout.StepperListener, ClientDataFragment.OnFragmentInteractionListener,
-        Test2Fragment.OnFragmentInteractionListener,Test3Fragment.OnFragmentInteractionListener {
+        ClientAddressFragment.OnFragmentInteractionListener,ClientTelephoneFragment.OnFragmentInteractionListener,ClientAdditionalDataFragment.OnFragmentInteractionListener {
 
     //SubtitleCollapsingToolbar
     SubtitleCollapsingToolbarLayout collapsingToolbarLayout;
@@ -78,12 +79,12 @@ public class StepperActivity extends AppCompatActivity
         mStepperLayout.setAdapter(mStepperAdapter);
         mStepperLayout.setListener(this);
     }
-    public void fragmentTab3(){
+    /*public void fragmentTab3(){
         Test3Fragment fragment=new Test3Fragment();
         mStepperLayout.setVisibility(View.INVISIBLE);
         changeFragment(fragment);
 
-    }
+    }*/
     public void backToMain(){
         Intent i = new Intent(StepperActivity.this, MainActivity.class );
         //i.putExtra("USER_MODEL",userModel) ;
@@ -156,6 +157,26 @@ public class StepperActivity extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void fragmentClientAdditionalData() {
+
+    }
+
+    @Override
+    public void fragmentClientAddress() {
+
+    }
+
+    @Override
+    public void fragmentClientData() {
+        
+    }
+
+    @Override
+    public void fragmentClientTelephone() {
 
     }
 

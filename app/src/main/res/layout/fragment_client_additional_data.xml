@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.ClientAdditionalDataFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/lineayLayoutSpinnerLocationDays"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="60dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="18dp"
+
+                android:orientation="vertical"
+                android:paddingTop="65dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <calculatuesfuerzo.finsol.com.mx.calcula.util.MultiSpinner
+                    android:id="@+id/multi_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <TableLayout
+                android:id="@+id/tableLayout_location_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="60dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lineayLayoutSpinnerLocationDays">
+                <TableRow
+                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/tableRow1"
+                    android:gravity="center_vertical">
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent">
+                        <EditText
+                            android:id="@+id/editText_prospect_initial_time"
+                            android:inputType="none"
+                            android:textIsSelectable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text=""
+                            android:hint="@string/initial_location_time"
+                            android:drawableLeft="@drawable/ic_home_black_24dp"
+
+                            />
+                    </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent">
+                        <EditText
+                            android:id="@+id/editText_prospect_final_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="none"
+                            android:textIsSelectable="true"
+                            android:text=""
+                            android:hint="@string/final_location_time"
+                            android:drawableLeft="@drawable/ic_home_black_24dp"/>
+                    </android.support.design.widget.TextInputLayout>
+
+                </TableRow>
+            </TableLayout>
+            <LinearLayout
+                android:id="@+id/lineayLayoutSpinnerExperienceInGroupCredit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="60dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+
+                android:orientation="vertical"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tableLayout_location_time">
+
+                <TextView
+                    android:id="@+id/textViewExperienceInGroupCredit"
+                    style="@style/TextView.InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/experience_in_group_credit" />
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/spinnerExperienceInGroupCredit"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dialog"
+
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lineayLayoutSpinnerCampaign"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="60dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+
+                android:orientation="vertical"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lineayLayoutSpinnerExperienceInGroupCredit">
+
+                <TextView
+                    android:id="@+id/textViewCampaign"
+                    style="@style/TextView.InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/campaign" />
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/spinnerCampaign"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dialog"
+
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lineayLayoutSpinnerStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="60dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+
+                android:orientation="vertical"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lineayLayoutSpinnerCampaign">
+
+                <TextView
+                    android:id="@+id/textViewStatus"
+                    style="@style/TextView.InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/status" />
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/spinnerStatus"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dialog"
+
+                    />
+            </LinearLayout>
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        ></LinearLayout>
+
+
+</LinearLayout>

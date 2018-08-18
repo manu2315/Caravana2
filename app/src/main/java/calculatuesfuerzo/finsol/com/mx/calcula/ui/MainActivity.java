@@ -32,11 +32,16 @@ import java.io.IOException;
 import java.net.URL;
 
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
-import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.Test1Fragment;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientAdditionalDataFragment;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientAddressFragment;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientDataFragment;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientTelephoneFragment;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.HomeFragment;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,Test1Fragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener,HomeFragment.OnFragmentInteractionListener,ClientDataFragment.OnFragmentInteractionListener,
+        ClientAddressFragment.OnFragmentInteractionListener,ClientTelephoneFragment.OnFragmentInteractionListener,ClientAdditionalDataFragment.OnFragmentInteractionListener{
 
 
     //INICIO VARIABLES
@@ -145,7 +150,7 @@ public class MainActivity extends AppCompatActivity
         //HomeFragment fragment = new HomeFragment();
         //Metodo para utilzarse con el menu de sandwich MenuItem item
         //changeFragment(fragment, navigationView.getMenu().getItem(0));
-        Test1Fragment fragment = new Test1Fragment();
+        HomeFragment fragment = new HomeFragment();
         changeFragment(fragment);
         changeFragment(fragment);
     }
@@ -326,6 +331,26 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void fragmentClientAdditionalData() {
+
+    }
+
+    @Override
+    public void fragmentClientAddress() {
+
+    }
+
+    @Override
+    public void fragmentClientData() {
+
+    }
+
+    @Override
+    public void fragmentClientTelephone() {
 
     }
 

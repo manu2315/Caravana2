@@ -8,13 +8,13 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,18 +23,20 @@ import com.stepstone.stepper.BlockingStep;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
-import calculatuesfuerzo.finsol.com.mx.calcula.util.DatePickerFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ClientDataFragment.OnFragmentInteractionListener} interface
+ * {@link ClientAddressFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ClientDataFragment#newInstance} factory method to
+ * Use the {@link ClientAddressFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ClientDataFragment extends Fragment implements BlockingStep {
+public class ClientAddressFragment extends Fragment implements BlockingStep {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -46,34 +48,11 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
 
     private OnFragmentInteractionListener mListener;
 
-    //Vars
-    //private Prospecto mProspecto;
-    private String [] genero={"Selecciona genero","Femenino","Masculino"};
-    private ArrayAdapter<String> spinnerArrayAdapterGenere;
-    //private List<String> listColonys;
-    //private ArrayAdapter<String> spinnerArrayAdapterColony;
-
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-
-    public String fecha;
-    //private Adapter adapter ;
-    /*private EditText txtProsctoApellPat;
-    private Button btnNext;*/
-
-    EditText txtProsctoApellPat,txtProsctoApellMat,txtProsctoNombre,txtFechaNacimiento,txtProsctoRfc;
-    Spinner spinnerGenero;
-    //Button btnNext;
-
-
-
-
-    public ClientDataFragment() {
+    Spinner spinnerColonia;
+    private List<String> listColonys;
+    private ArrayAdapter<String> spinnerArrayAdapterColony;
+    Button btnNext,btnBack;
+    public ClientAddressFragment() {
         // Required empty public constructor
     }
 
@@ -83,11 +62,11 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ClientDataFragment.
+     * @return A new instance of fragment ClientAddressFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ClientDataFragment newInstance(String param1, String param2) {
-        ClientDataFragment fragment = new ClientDataFragment();
+    public static ClientAddressFragment newInstance(String param1, String param2) {
+        ClientAddressFragment fragment = new ClientAddressFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -108,38 +87,26 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_client_data, container, false);
+        View view= inflater.inflate(R.layout.fragment_client_address, container, false);
         bindUI(view);
-        genero();
-
-        fechaNacimiento();
+        colonia();
 
         return view;
     }
     private void bindUI(View view){
 
-        txtProsctoApellPat=(EditText) view.findViewById(R.id.editText_prospect_father_lastname);
-        txtProsctoApellMat=(EditText) view.findViewById(R.id.editText_prospect_mother_lastname);
-        txtProsctoNombre=(EditText) view.findViewById(R.id.editText_prospect_name);
-        txtFechaNacimiento=(EditText) view.findViewById(R.id.editText_prospect_birthdate);
-        txtProsctoRfc=(EditText) view.findViewById(R.id.editText_prospect_rfc);
-        spinnerGenero=(Spinner)view.findViewById(R.id.spinnerG);
-        //spinnerColonia=(Spinner)view.findViewById(R.id.spinnerColony);
-        //btnNext=(Button)view.findViewById(R.id.button_Next);
-
-
-
-
-
+        listColonys = new ArrayList<>();
+        listColonys.add("Buscar colonia");
+        spinnerColonia=(Spinner)view.findViewById(R.id.spinnerColony);
+        spinnerColonia.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.abc_edit_text_material));
 
 
     }
-    private void genero(){
-        //material spinner Genero INICIO
-        spinnerArrayAdapterGenere = new ArrayAdapter<String>(
-                getContext(),R.layout.spinner_item,genero){
+    private void colonia(){
+        //material spinner Colina INICIO
+        spinnerArrayAdapterColony = new ArrayAdapter<String>(getContext(),R.layout.spinner_item,listColonys){
             @Override
-            public boolean isEnabled(int position){
+            public boolean isEnabled(int position) {
                 if(position == 0)
                 {
                     // Disable the first item from Spinner
@@ -151,9 +118,9 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
                     return true;
                 }
             }
+
             @Override
-            public View getDropDownView(int position, View convertView,
-                                        ViewGroup parent) {
+            public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView tv = (TextView) view;
                 if(position == 0){
@@ -167,10 +134,10 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
             }
         };
 
-        spinnerArrayAdapterGenere.setDropDownViewResource(R.layout.spinner_item);
-        spinnerGenero.setAdapter(spinnerArrayAdapterGenere);
+        spinnerArrayAdapterColony.setDropDownViewResource(R.layout.spinner_item);
+        spinnerColonia.setAdapter(spinnerArrayAdapterColony);
 
-        spinnerGenero.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerColonia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItemText = (String) parent.getItemAtPosition(position);
@@ -189,25 +156,17 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
 
             }
         });
-        //material spinner Genero FIN
 
     }
 
-    private void fechaNacimiento(){
-        //Aqui se debe mostrar el datetimepicker
-        txtFechaNacimiento.setOnClickListener(new View.OnClickListener() {
+    private void backDataClient(){
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                DatePickerFragment newFragment = new DatePickerFragment();
-                newFragment.bindEditText(txtFechaNacimiento);
-                newFragment.show(getFragmentManager(), "DatePicker");
-
-
+                mListener.fragmentClientData();
             }
         });
     }
-
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -233,23 +192,8 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
         mListener = null;
     }
 
-    @Nullable
-    @Override
-    public VerificationError verifyStep() {
-        return null;
-    }
-    @Override
-    public void onError(@NonNull VerificationError error) {
-        Toast.makeText(getContext(), "onError! 1-> " + error.getErrorMessage(), Toast.LENGTH_SHORT).show();
-    }
-    @Override
-    public void onSelected() {
-        Toast.makeText(getContext(), "onSelected Fragment 1", Toast.LENGTH_SHORT).show();
-    }
-    //Blockingstep
     @Override
     public void onNextClicked(final StepperLayout.OnNextClickedCallback callback) {
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -265,9 +209,21 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
 
     @Override
     public void onBackClicked(StepperLayout.OnBackClickedCallback callback) {
-        //callback.goToPrevStep();
-        mListener.backToMain();
+        callback.goToPrevStep();
+    }
 
+    @Nullable
+    @Override
+    public VerificationError verifyStep() {
+        return null;
+    }
+    @Override
+    public void onError(@NonNull VerificationError error) {
+        Toast.makeText(getContext(), "onError! 2-> " + error.getErrorMessage(), Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public void onSelected() {
+        Toast.makeText(getContext(), "onSelected Fragment 2", Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -283,7 +239,8 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
-        void backToMain();
+        void fragmentClientData();
+        void fragmentClientTelephone();
 
     }
 }
