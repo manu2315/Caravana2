@@ -79,6 +79,12 @@ public class Provider<V extends Model> {
         return ref.getKey();
     }
 
+    public static void guardarFirebase(String path, Object value){
+        DatabaseReference ref = mDatabase.getReference(path).push();
+        ref.setValue(value);
+
+    }
+
     <T extends Model> T parseDatasnapshot(DataSnapshot dataSnapshot, Class<T> type) {
         if(dataSnapshot.getValue()!=null){
             T t = dataSnapshot.getValue(type);

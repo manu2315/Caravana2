@@ -183,23 +183,23 @@ public class StepperActivity extends AppCompatActivity
     @Override
     public void onCompleted(View completeButton) {
 
-        Toast.makeText(this, "onCompleted! Activity 1", Toast.LENGTH_SHORT).show();
+     //   Toast.makeText(this, "onCompleted! Activity 1", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onError(@NonNull VerificationError error) {
-        Toast.makeText(this, "onError! Activity 1 -> " + error.getErrorMessage(), Toast.LENGTH_SHORT).show();
+     //   Toast.makeText(this, "onError! Activity 1 -> " + error.getErrorMessage(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onStepSelected(int newStepPosition) {
-        Toast.makeText(this, "onStepSelected! Activity 1 -> " + newStepPosition, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, "onStepSelected! Activity 1 -> " + newStepPosition, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onReturn() {
         //finish();
-        Toast.makeText(this, "onReturn! Activity 1 -> ", Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, "onReturn! Activity 1 -> ", Toast.LENGTH_SHORT).show();
     }
 
 

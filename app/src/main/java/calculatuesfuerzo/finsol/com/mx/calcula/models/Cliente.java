@@ -3,7 +3,55 @@ package calculatuesfuerzo.finsol.com.mx.calcula.models;
 import calculatuesfuerzo.finsol.com.mx.calcula.adapters.Model;
 
 public class Cliente extends Model {
-    private String apellidoPaterno,apellidoMaterno,nombre,fechaDeNacimiento,rfc,genero;
+
+    private String id,apellidoPaterno,apellidoMaterno,nombre,fechaDeNacimiento,rfc,genero;
+
+    private Direccion direccion;
+    private Telefono telefono;
+    private Adicionales adicionales;
+    public Cliente() {
+    }
+
+    public Cliente(String apellidoPaterno, String apellidoMaterno, String nombre, String fechaDeNacimiento, String rfc, String genero) {
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.nombre = nombre;
+        this.fechaDeNacimiento = fechaDeNacimiento;
+        this.rfc = rfc;
+        this.genero = genero;
+    }
+
+    public Direccion getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
+    }
+
+    public Telefono getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(Telefono telefono) {
+        this.telefono = telefono;
+    }
+
+    public Adicionales getAdicionales() {
+        return adicionales;
+    }
+
+    public void setAdicionales(Adicionales adicionales) {
+        this.adicionales = adicionales;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getApellidoPaterno() {
         return apellidoPaterno;

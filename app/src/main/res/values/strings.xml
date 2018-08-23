@@ -53,6 +53,7 @@
     <string name="status">Estatus</string>
     <string name="meta">Meta</string>
     <string name="carrera">Carrera</string>
+    <string name="consultar_buro_de_credito">¿Quieres consultar el buró de crédito?</string>
 
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -147,6 +148,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_stepper">StepperActivity</string>
+    <string name="dialog.message.client">Los datos de la petición son incorrectos por favor verifique: El apellido paterno, nombre y fecha de nacimiento.</string>
+    <string name="dialog.close">Close</string>
+    <string name="dialog.error">Error</string>
     <!--PROBLEMA SIN PERMISOS FIN-->
 
 </resources>

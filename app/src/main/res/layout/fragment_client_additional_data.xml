@@ -177,6 +177,32 @@
 
                     />
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearLayoutBuroDeCredito"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="60dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+
+                android:orientation="horizontal"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lineayLayoutSpinnerStatus">
+
+                <Switch
+                    android:id="@+id/switchBuroDeCredito"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/textviewSwitch"
+                    android:layout_width="wrap_content"
+                    android:text="@string/consultar_buro_de_credito"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
@@ -185,7 +211,8 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="vertical"
-        ></LinearLayout>
+        >
+    </LinearLayout>
 
 
 </LinearLayout>

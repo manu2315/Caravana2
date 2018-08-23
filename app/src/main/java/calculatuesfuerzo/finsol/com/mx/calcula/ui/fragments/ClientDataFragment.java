@@ -13,18 +13,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.stepstone.stepper.BlockingStep;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
+
+
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
+import calculatuesfuerzo.finsol.com.mx.calcula.models.Cliente;
 import calculatuesfuerzo.finsol.com.mx.calcula.util.DatePickerFragment;
+import calculatuesfuerzo.finsol.com.mx.calcula.providers.Provider;
+import calculatuesfuerzo.finsol.com.mx.calcula.util.MyAlertDialogFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,6 +48,10 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    //Firebase
+    private static final String PATH="prospectos";
+    private Cliente client;
+
 
     //Vars
     //private Prospecto mProspecto;
@@ -61,7 +68,8 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
         this.fecha = fecha;
     }
 
-    public String fecha;
+    public String nom,ap_pat,ap_mat,fecha,gen,rfc;
+    private boolean save;
     //private Adapter adapter ;
     /*private EditText txtProsctoApellPat;
     private Button btnNext;*/
@@ -111,8 +119,9 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
         View view = inflater.inflate(R.layout.fragment_client_data, container, false);
         bindUI(view);
         genero();
-
         fechaNacimiento();
+
+
 
         return view;
     }
@@ -129,11 +138,8 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
 
 
 
-
-
-
-
     }
+
     private void genero(){
         //material spinner Genero INICIO
         spinnerArrayAdapterGenere = new ArrayAdapter<String>(
@@ -178,9 +184,10 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
                 // First item is disable and it is used for hint
                 if(position > 0){
                     // Notify the selected item text
-                    Toast.makeText
+                    /*Toast.makeText
                             (getContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
-                            .show();
+                            .show();*/
+                    gen=selectedItemText.toString();
                 }
             }
 
@@ -193,17 +200,42 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
 
     }
 
+    private boolean checkValues(EditText editText){
+        if(editText.getText().toString().equals("")){
+            save=false;
+            return save;
+        }
+        save= true;
+            return save;
+    }
+    private void errorAlert(){
+        MyAlertDialogFragment dialogFragment = new MyAlertDialogFragment();
+        dialogFragment.show(getFragmentManager(), "Error Alert");
+
+    }
+    private void getValues(){
+        if(checkValues(txtProsctoNombre))
+            nom=txtProsctoNombre.getText().toString();
+        if(checkValues(txtProsctoApellPat))
+            ap_pat=txtProsctoApellPat.getText().toString();
+        //Ap materno no obligatorio
+        ap_mat=txtProsctoApellMat.getText().toString();
+        if(checkValues(txtFechaNacimiento))
+            fecha=txtFechaNacimiento.getText().toString();
+        //Falta definir funcion RFC
+        rfc="BELE910104HSBCRM01";
+    }
+    private void nuevoCliente(){
+        client = new Cliente(ap_pat,ap_mat,nom,fecha,rfc,gen);
+    }
     private void fechaNacimiento(){
         //Aqui se debe mostrar el datetimepicker
         txtFechaNacimiento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 DatePickerFragment newFragment = new DatePickerFragment();
                 newFragment.bindEditText(txtFechaNacimiento);
                 newFragment.show(getFragmentManager(), "DatePicker");
-
-
             }
         });
     }
@@ -240,11 +272,11 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
     }
     @Override
     public void onError(@NonNull VerificationError error) {
-        Toast.makeText(getContext(), "onError! 1-> " + error.getErrorMessage(), Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getContext(), "onError! 1-> " + error.getErrorMessage(), Toast.LENGTH_SHORT).show();
     }
     @Override
     public void onSelected() {
-        Toast.makeText(getContext(), "onSelected Fragment 1", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getContext(), "onSelected Fragment 1", Toast.LENGTH_SHORT).show();
     }
     //Blockingstep
     @Override
@@ -253,7 +285,17 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                callback.goToNextStep();
+                getValues();
+                if(save){
+                    nuevoCliente();
+                    Provider.pushValue(PATH,client);
+                    callback.goToNextStep();
+                }
+                else{
+                    errorAlert();
+                }
+
+
             }
         },2000L);
     }
@@ -270,16 +312,6 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
 
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
