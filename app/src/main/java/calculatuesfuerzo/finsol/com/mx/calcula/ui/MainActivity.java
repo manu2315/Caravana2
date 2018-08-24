@@ -13,6 +13,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.SubtitleCollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
+import android.text.SpannableString;
+import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -32,11 +34,14 @@ import java.io.IOException;
 import java.net.URL;
 
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
+import calculatuesfuerzo.finsol.com.mx.calcula.adapters.user.UserSingleton;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientAdditionalDataFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientAddressFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientDataFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientTelephoneFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.HomeFragment;
+import calculatuesfuerzo.finsol.com.mx.calcula.util.Constantes;
+import calculatuesfuerzo.finsol.com.mx.calcula.util.Util;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity
@@ -48,16 +53,18 @@ public class MainActivity extends AppCompatActivity
     //BottomTab
     private TextView mTextMessage;
     private BottomNavigationView navigation;
+
     //Drawable
-    DrawerLayout drawer;
+    //DrawerLayout drawer;
     NavigationView navigationView;
-    ActionBarDrawerToggle toggle;
+    //ActionBarDrawerToggle toggle;
     //Collapse ActionBar with ImageView Parallax Slide Animation
     Toolbar toolbar;
     AppBarLayout appBarLayout;
     //SubtitleCollapsingToolbar
     SubtitleCollapsingToolbarLayout collapsingToolbarLayout;
-    boolean ExpandedActionBar = true;
+    boolean ExpandedActionBar = true;//**
+    int scrollRange = -1;
     //fragments
     public android.app.FragmentManager fragmentManager;
     int idFm;
@@ -65,7 +72,7 @@ public class MainActivity extends AppCompatActivity
     private String mail;
     //ImageView imageViewUser;
     CircleImageView imageViewUser;
-    TextView textViewUserMail;
+    TextView textViewUserMail,textViewUserName,textViewUserNumber;
     FirebaseUser user;
 
     @Override
@@ -73,36 +80,33 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bindUI();
-        getPhotoUser() ;
         setFragmentByDefault();
+        Util.expand(appBarLayout,collapsingToolbarLayout,user.getDisplayName().toString(),Constantes.NO_NOMINA+UserSingleton.USER_MODEL.getPersona().toString());
 
-
-        //Pruebas
-        /*
-        collapsingToolbarLayout.setTitle("Marco Antonio Lopez Perez");
-        collapsingToolbarLayout.setSubtitle("1234567890-Asesor de Credito");*/
     }
+
 
     //Metodos propios
     private void bindUI(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         collapsingToolbarLayout=(SubtitleCollapsingToolbarLayout)findViewById(R.id.ctoolbar);
+        collapsingToolbarLayout.setCollapsedSubtitleTextAppearance(R.style.TextAppearance_AppCompat_Caption);
+        collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.TextAppearance_AppCompat_Button);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
 
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        //drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //drawer.addDrawerListener(toggle);
+        //toggle.syncState();
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -116,34 +120,34 @@ public class MainActivity extends AppCompatActivity
         //Navigation
 
         user= FirebaseAuth.getInstance().getCurrentUser();
-        mail=user.getEmail();
+
+
         //NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
         //TextView navUsername = (TextView) headerView.findViewById(R.id.navUsername);
         //navUsername.setText("Your Text Here");
-        imageViewUser =(CircleImageView) headerView.findViewById(R.id.imageViewUser);
-        textViewUserMail=(TextView) headerView.findViewById(R.id.textViewUser);
-        textViewUserMail.setText(mail);
+        imageViewUser =(CircleImageView) findViewById(R.id.user_photo);
+        //imageViewUser =(CircleImageView) headerView.findViewById(R.id.user_photo);
+        //textViewUserMail=(TextView) headerView.findViewById(R.id.user_email);
+        textViewUserMail=(TextView) findViewById(R.id.user_email);
+        textViewUserName=(TextView)findViewById(R.id.user_name);
+        textViewUserNumber=(TextView)findViewById(R.id.user_rol);
+        datosUserLogin();
+        collapsingToolbarLayout.setTitle(" ");
+        appBarLayout=(AppBarLayout)findViewById(R.id.app_bar_main);
+
     }
 
-    private void expand(){
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if(Math.abs(verticalOffset)>200){
-                    ExpandedActionBar=false;
-                    collapsingToolbarLayout.setTitle("Marco Antonio Lopez Perez");
-                    collapsingToolbarLayout.setSubtitle("1234567890-Asesor de Credito");
-                    invalidateOptionsMenu();
-                }else{
-                    ExpandedActionBar = true;
-                    collapsingToolbarLayout.setTitle("");//Marco Antonio Lopez Perez\n"+"1234567890-Asesor de Credito
-                    collapsingToolbarLayout.setSubtitle("");
-                    invalidateOptionsMenu();
-                }
-            }
-        });
+    private void datosUserLogin(){
+        //mail=user.getEmail();
+        getPhotoUser() ;
+        textViewUserMail.setText(user.getEmail().toString());
+        textViewUserName.setText(user.getDisplayName().toString());
+        textViewUserNumber.setText(Constantes.NO_NOMINA+UserSingleton.USER_MODEL.getPersona().toString());
+
     }
+
+
 
     private void setFragmentByDefault()
     {
@@ -162,8 +166,10 @@ public class MainActivity extends AppCompatActivity
         //idFm=getSupportFragmentManager().getBackStackEntryCount();
         //item.setCheckable(true);
         //getSupportActionBar().setTitle(item.getTitle());
-        getSupportActionBar().setTitle("Datos del Cliente");
-        drawer.closeDrawers();
+
+        //TItulo//************
+        getSupportActionBar().setTitle("");
+        //drawer.closeDrawers();
     }
     /*
     public void fragmentClienttelephone(){

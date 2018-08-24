@@ -14,4 +14,7 @@ public class Constantes {
     public static final String PUESTO_COORDINADOR ="COORDINADOR ";
     public static final String PUESTO_SUCURSAL ="SUCURSAL ";
     public static final String PUESTO_ASESOR ="ASESOR ";
+    public static final String NO_NOMINA="N. Nómina: ";
+    public static int SCROLLRANGE = -1;
+    public static boolean EXPANDEDACTIONBAR = true;
 }

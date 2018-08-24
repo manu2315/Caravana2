@@ -37,6 +37,7 @@ public class UserSingleton {
                     }
 
                     USER_MODEL = userModel;
+
                 }
                 @Override
                 public void onCancelled(DatabaseError databaseError) {

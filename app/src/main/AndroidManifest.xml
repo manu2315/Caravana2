@@ -30,6 +30,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:configChanges="orientation"
+        android:screenOrientation="portrait"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.SplashScreenActivity">
             <intent-filter>
@@ -42,17 +44,15 @@
         <activity
             android:name=".ui.MainActivity"
             android:label="@string/title_activity_main"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ui.TabActivity"
-            android:label="@string/title_activity_tab" />
-        <activity
-            android:name=".ui.ScrollActivity"
-            android:label="@string/title_activity_scroll" />
         <activity
             android:name=".ui.StepperActivity"
             android:label="@string/title_activity_stepper"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

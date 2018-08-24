@@ -14,6 +14,8 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.SubtitleCollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -22,6 +24,8 @@ import android.text.format.DateUtils;
 import android.util.Property;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseUser;
 
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
@@ -279,5 +283,32 @@ public class Util {
     {
         DecimalFormat twoDForm = new DecimalFormat("#.##");
         return Double.valueOf(twoDForm.format(d));
+    }
+
+    public static void expand(AppBarLayout appBarLayout,final SubtitleCollapsingToolbarLayout collapsingToolbarLayout,final String  userName, final String noNomina){
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (Constantes.SCROLLRANGE == -1) {
+                    Constantes.SCROLLRANGE = appBarLayout.getTotalScrollRange();
+                }
+                if (Constantes.SCROLLRANGE + verticalOffset == 0) {
+                    //when collapsingToolbar at that time display actionbar title
+                    //collapsingToolbarLayout.setTitle(getResources().getString(R.string.app_name));
+                    //collapsingToolbarLayout.setTitle(textViewUserName.getText().toString());
+                    collapsingToolbarLayout.setTitle(userName);
+                    collapsingToolbarLayout.setSubtitle(noNomina);
+                    Constantes.EXPANDEDACTIONBAR = true;
+                } else if (Constantes.EXPANDEDACTIONBAR) {
+                    //carefull there must a space between double quote otherwise it dose't work
+
+                    collapsingToolbarLayout.setTitle(" ");
+                    collapsingToolbarLayout.setSubtitle(" ");
+                    Constantes.EXPANDEDACTIONBAR = false;
+                }
+
+
+            }
+        });
     }
 }
