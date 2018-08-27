@@ -39,7 +39,7 @@
                 android:layout_marginStart="@dimen/edittext_margin_start_title"
                 android:layout_marginTop="8dp"
                 android:text="@string/datos_cliente"
-                android:textSize="20dp"
+                android:textSize="@dimen/title_size"
                 app:layout_constraintBottom_toTopOf="@+id/textInputLayoutFatherLastName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -68,6 +68,7 @@
                     android:hint="@string/prospect_father_lastname"
                     android:inputType="textPersonName"
                     android:text=""
+                    android:textColor="@color/colorText"
                     tools:layout_editor_absoluteX="72dp"
                     tools:layout_editor_absoluteY="199dp" />
                 <!--android:text="@={datosCliente.apellidoPat}"-->
@@ -93,6 +94,7 @@
                     android:hint="@string/prospect_mother_lastname"
                     android:inputType="textPersonName"
                     android:text=""
+                    android:textColor="@color/colorText"
                     tools:layout_editor_absoluteX="72dp"
                     tools:layout_editor_absoluteY="199dp" />
 
@@ -119,6 +121,7 @@
                     android:hint="@string/prospect_name"
                     android:inputType="textPersonName"
                     android:text=""
+                    android:textColor="@color/colorText"
                     tools:layout_editor_absoluteX="72dp"
                     tools:layout_editor_absoluteY="199dp" />
 
@@ -143,6 +146,7 @@
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:hint="@string/prospect_birthdate"
+                    android:textColor="@color/colorText"
                     android:inputType="none"
                     android:text=""
                     android:textIsSelectable="true"
@@ -190,6 +194,7 @@
                         android:hint="@string/prospect_rfc"
                         android:inputType="none"
                         android:text=""
+                        android:textColor="@color/colorText"
                         android:textIsSelectable="true"
                         tools:layout_editor_absoluteX="72dp"
                         tools:layout_editor_absoluteY="199dp" />
@@ -230,7 +235,7 @@
                     style="@style/TextView.InputLabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Genero" />
+                    android:text="@string/genere_client" />
 
                 <android.support.v7.widget.AppCompatSpinner
                     android:id="@+id/spinnerG"
@@ -238,6 +243,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:spinnerMode="dialog"
+                    android:textColor="@color/colorText"
 
                     />
             </LinearLayout>

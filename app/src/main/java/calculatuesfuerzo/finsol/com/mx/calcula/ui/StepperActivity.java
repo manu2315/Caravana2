@@ -43,6 +43,7 @@ import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientAdditionalData
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientAddressFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientDataFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientTelephoneFragment;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.CompleteFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.util.Constantes;
 import calculatuesfuerzo.finsol.com.mx.calcula.util.Util;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -50,7 +51,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class StepperActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,StepperLayout.StepperListener, ClientDataFragment.OnFragmentInteractionListener,
-        ClientAddressFragment.OnFragmentInteractionListener,ClientTelephoneFragment.OnFragmentInteractionListener,ClientAdditionalDataFragment.OnFragmentInteractionListener {
+        ClientAddressFragment.OnFragmentInteractionListener,ClientTelephoneFragment.OnFragmentInteractionListener,ClientAdditionalDataFragment.OnFragmentInteractionListener,CompleteFragment.OnFragmentInteractionListener {
 
     //SubtitleCollapsingToolbar
     SubtitleCollapsingToolbarLayout collapsingToolbarLayout;

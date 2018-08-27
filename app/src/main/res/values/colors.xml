@@ -7,6 +7,8 @@
     <color name="colorAccent2">#F0D02A</color>
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#757575</color>
+    <color name="colorText">#47515b</color>
+    <color name="colorEditText">#DCDCDC</color>
     <color name="colorIcons">#FAFAFA</color>
     <color name="colorDivider">#cfcfcf</color>
     <color name="colorCalculator">#F1553F</color>

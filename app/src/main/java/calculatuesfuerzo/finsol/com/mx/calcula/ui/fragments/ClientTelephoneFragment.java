@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,6 +56,7 @@ public class ClientTelephoneFragment extends Fragment implements BlockingStep {
     EditText txtTelephone;
     TextInputLayout txtInputLayouttelefono;
     Button btnBack,btnNext;
+    ImageView imgvwTelehpone;
 
 
 
@@ -102,7 +104,8 @@ public class ClientTelephoneFragment extends Fragment implements BlockingStep {
     private void bindUI(View view){
         sprTelephoneType= (Spinner)view.findViewById(R.id.spinnerTelephoneType);
         txtTelephone=(EditText)view.findViewById(R.id.editText_prospect_telephone);
-        txtInputLayouttelefono=(TextInputLayout)view.findViewById(R.id.textInputLayoutFatherLastName);
+        txtInputLayouttelefono=(TextInputLayout)view.findViewById(R.id.textInputLayoutTelephone);
+        imgvwTelehpone = (ImageView)view.findViewById(R.id.imgvwTelehpone);
     }
 
     private void telephoneType(){
@@ -147,24 +150,29 @@ public class ClientTelephoneFragment extends Fragment implements BlockingStep {
                 switch(position){
                     case 0:
                         txtTelephone.setVisibility(View.INVISIBLE);
+                        imgvwTelehpone.setVisibility(View.INVISIBLE);
                         txtTelephone.setHint("");
                         txtInputLayouttelefono.setVisibility(View.INVISIBLE);
                         break;
                     case 1:
                         txtTelephone.setVisibility(View.VISIBLE);
+                        imgvwTelehpone.setVisibility(View.VISIBLE);
                         txtInputLayouttelefono.setVisibility(View.VISIBLE);
-                        txtTelephone.setHint(R.string.prospect_telephone);
+                        //txtTelephone.setHint(R.string.prospect_telephone);
                         img = getContext().getResources().getDrawable( R.drawable.ic_phone_black_24dp,null );
-                        img.setBounds( 0, 0, 60, 60 );
-                        txtTelephone.setCompoundDrawables( img, null, null, null );
+                        imgvwTelehpone.setImageDrawable(img);
+                        /*img.setBounds( 0, 0, 60, 60 );
+                        txtTelephone.setCompoundDrawables( img, null, null, null );*/
                         break;
                     case 2:
                         txtTelephone.setVisibility(View.VISIBLE);
+                        imgvwTelehpone.setVisibility(View.VISIBLE);
                         txtInputLayouttelefono.setVisibility(View.VISIBLE);
-                        txtTelephone.setHint(R.string.prospect_cellphone);
+                        //txtTelephone.setHint(R.string.prospect_cellphone);
                         img = getContext().getResources().getDrawable( R.drawable.ic_smartphone_android_black_24dp,null );
-                        img.setBounds( 0, 0, 60, 60 );
-                        txtTelephone.setCompoundDrawables( img, null, null, null );
+                        imgvwTelehpone.setImageDrawable(img);
+                        /*img.setBounds( 0, 0, 60, 60 );
+                        txtTelephone.setCompoundDrawables( img, null, null, null );*/
                         break;
 
 

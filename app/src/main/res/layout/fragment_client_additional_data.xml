@@ -35,7 +35,7 @@
                 android:layout_marginStart="@dimen/edittext_margin_start_title"
                 android:layout_marginTop="8dp"
                 android:text="@string/datos_adicionales"
-                android:textSize="20dp"
+                android:textSize="@dimen/title_size"
                 app:layout_constraintBottom_toTopOf="@+id/lineayLayoutSpinnerLocationDays"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -67,7 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.AppCompat.Spinner.Underlined"
-                    android:spinnerMode="dropdown"
+
                     />
 
             </LinearLayout>
@@ -98,6 +98,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text=""
+                            android:textColor="@color/colorText"
+                            android:textAlignment="center"
                             android:hint="@string/initial_location_time"
                             android:drawableLeft="@drawable/ic_access_time_black_24dp"
                             android:drawablePadding="@dimen/drawable_padding"
@@ -115,6 +117,8 @@
                             android:inputType="none"
                             android:textIsSelectable="true"
                             android:text=""
+                            android:textColor="@color/colorText"
+                            android:textAlignment="center"
                             android:hint="@string/final_location_time"
                             android:drawableLeft="@drawable/ic_alarm_off_black_24dp"
                             android:drawablePadding="@dimen/drawable_padding"/>
@@ -151,6 +155,7 @@
                     android:layout_height="wrap_content"
                     android:spinnerMode="dropdown"
 
+
                     />
             </LinearLayout>
             <LinearLayout
@@ -181,6 +186,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:spinnerMode="dropdown"
+                    android:textColor="@color/colorText"
 
                     />
             </LinearLayout>
@@ -212,6 +218,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:spinnerMode="dropdown"
+                    android:textColor="@color/colorText"
 
                     />
             </LinearLayout>

@@ -19,6 +19,7 @@ import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientAdditionalData
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientAddressFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientDataFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientTelephoneFragment;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.CompleteFragment;
 
 
 public  class MyStepperAdapter extends AbstractFragmentStepAdapter {
@@ -55,6 +56,12 @@ public  class MyStepperAdapter extends AbstractFragmentStepAdapter {
                 b4.putInt(CURRENT_STEP_POSITION_KEY, position);
                 step4.setArguments(b4);
                 return step4;
+            case 4:
+                final CompleteFragment step5 = new CompleteFragment();
+                Bundle b5 = new Bundle();
+                b5.putInt(CURRENT_STEP_POSITION_KEY,position);
+                step5.setArguments(b5);
+                return step5;
 
         }
         return null;
@@ -62,7 +69,7 @@ public  class MyStepperAdapter extends AbstractFragmentStepAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return 5;
     }
 
     @NonNull
@@ -100,11 +107,18 @@ public  class MyStepperAdapter extends AbstractFragmentStepAdapter {
                 break;
             case 3:
                 builder.setTitle("Adicional")
-                        .setEndButtonLabel("Completar")
+                        .setEndButtonLabel("Siguiente")
+                        .setBackButtonLabel("Volver")
+                        .setNextButtonEndDrawableResId(R.drawable.ic_chevron_right_24dp)
+                        .setBackButtonStartDrawableResId(R.drawable.ic_arrow_back_24dp);
+
+                break;
+            case 4:
+                builder.setTitle("Revisión Final")
+                        .setEndButtonLabel("Terminar")
                         .setBackButtonLabel("Volver")
                         .setNextButtonEndDrawableResId(StepViewModel.NULL_DRAWABLE)
                         .setBackButtonStartDrawableResId(R.drawable.ic_arrow_back_24dp);
-
                 break;
             default:
                 throw new IllegalArgumentException("Unsupported position: " + position);

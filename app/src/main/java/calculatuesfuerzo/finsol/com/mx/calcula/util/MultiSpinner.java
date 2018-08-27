@@ -1,20 +1,31 @@
 package calculatuesfuerzo.finsol.com.mx.calcula.util;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.ColorStateList;
+import android.support.annotation.Nullable;
+import android.support.annotation.RestrictTo;
+import android.text.SpannableString;
 import android.util.AttributeSet;
 import android.widget.ArrayAdapter;
 
 import java.util.List;
 
+import calculatuesfuerzo.finsol.com.mx.calcula.R;
+
+import static android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP;
+
 public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner implements
         DialogInterface.OnMultiChoiceClickListener, DialogInterface.OnCancelListener {
 
     private List<String> items;
+
     private boolean[] selected;
     private String defaultText;
     private MultiSpinnerListener listener;
+
 
     public MultiSpinner(Context context) {
         super(context);
@@ -27,6 +38,8 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner imp
     public MultiSpinner(Context arg0, AttributeSet arg1, int arg2) {
         super(arg0, arg1, arg2);
     }
+
+
 
     @Override
     public void onClick(DialogInterface dialog, int which, boolean isChecked) {
@@ -57,11 +70,16 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner imp
         } else {
             spinnerText = defaultText;
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+
+        /*ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_spinner_item,
+                new String[] { spinnerText });*/
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                R.layout.spinner_item,
                 new String[] { spinnerText });
         setAdapter(adapter);
         listener.onItemsSelected(selected);
+
     }
 
     @Override
@@ -82,6 +100,7 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner imp
         return true;
     }
 
+
     public void setItems(List<String> items, String allText,
                          MultiSpinnerListener listener) {
         this.items = items;
@@ -94,10 +113,16 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner imp
             selected[i] = true;
 
         // all text on the spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+        /*ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_spinner_item, new String[] { allText });
+        setAdapter(adapter);*/
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                R.layout.spinner_item, new String[] { allText });
         setAdapter(adapter);
     }
+
+
 
     public interface MultiSpinnerListener {
         void onItemsSelected(boolean[] selected);

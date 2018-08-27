@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,8 +56,9 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
 
     //vars
     MultiSpinner multiSpinner;//Dias de la semana
-    List<String> dias;
+    ArrayList<String> dias;
     String[] diasArray = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"};
+
     private MultiSpinner.MultiSpinnerListener listener;
     EditText txtIntialTime, txtFinalTime;
 
@@ -113,6 +118,19 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
 
     }
 
+    private SpannableString[] diasColorGris(String [] diasArray){
+        SpannableString [] diasGris = new SpannableString[7];
+        for (int i=0;i<diasArray.length;i++){
+            SpannableString ss =new SpannableString(diasArray[i]);
+            int color = ContextCompat.getColor(getContext(),R.color.colorText);
+            ss.setSpan(new ForegroundColorSpan(Color.GRAY),0,0,0);
+            diasGris[i]=ss;
+
+        }
+
+        return diasGris;
+
+    }
     private void bindUI(View view) {
 
         txtIntialTime = (EditText) view.findViewById(R.id.editText_prospect_initial_time);
@@ -123,6 +141,8 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
         spinnerStatus = (Spinner) view.findViewById(R.id.spinnerStatus);
 
         multiSpinner = (MultiSpinner) view.findViewById(R.id.multi_spinner);
+
+
         dias = new ArrayList<>(Arrays.asList(diasArray));
         listener = new MultiSpinner.MultiSpinnerListener() {
             @Override
@@ -135,6 +155,7 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
                         .show();
             }
         };
+
         multiSpinner.setItems(dias, getString(R.string.prospect_locationDays_for_all), listener);
 
     }
@@ -363,12 +384,12 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
 
     @Override
     public void onNextClicked(StepperLayout.OnNextClickedCallback callback) {
-
+        callback.goToNextStep();
     }
 
     @Override
     public void onCompleteClicked(StepperLayout.OnCompleteClickedCallback callback) {
-        callback.complete();
+        //callback.complete();//ya no es el ultimo fragment
     }
 
     @Override

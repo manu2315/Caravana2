@@ -72,6 +72,8 @@
     <string name="telefono_cliente">Teléfonos del Cliente</string>
     <string name="dias_localizacion">Días de Localización</string>
     <string name="datos_adicionales">Datos Adicionales</string>
+    <string name="prospect_contact">Número de contacto</string>
+    <string name="genere_client">Genero</string>
     <!--PROBLEMA SIN PERMISOS FIN-->
 
 </resources>

@@ -222,6 +222,7 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
 
         if(checkValues(txtProsctoApellPat))
             ap_pat=txtProsctoApellPat.getText().toString();
+
         //Ap materno no obligatorio
         if(!txtProsctoApellMat.getText().toString().equals(""))
             ap_mat=txtProsctoApellMat.getText().toString();

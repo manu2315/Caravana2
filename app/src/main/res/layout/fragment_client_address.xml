@@ -41,7 +41,7 @@
                 android:layout_marginStart="@dimen/edittext_margin_start_title"
                 android:layout_marginTop="8dp"
                 android:text="@string/direccion_cliente"
-                android:textSize="20dp"
+                android:textSize="@dimen/title_size"
                 app:layout_constraintBottom_toTopOf="@+id/textInputLayoutAddress"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -69,6 +69,7 @@
                     android:hint="@string/prospect_address_principal_street"
                     android:inputType="textPersonName"
                     android:text=""
+                    android:textColor="@color/colorText"
                     tools:layout_editor_absoluteX="72dp"
                     tools:layout_editor_absoluteY="199dp" />
 
@@ -100,6 +101,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text=""
+                            android:textColor="@color/colorText"
                             android:hint="@string/prospect_outdoor_number"
 
                             />
@@ -114,6 +116,7 @@
                             android:layout_height="match_parent"
                             android:inputType="number"
                             android:text=""
+                            android:textColor="@color/colorText"
                             android:hint="@string/prospect_indoor_number"/>
                     </android.support.design.widget.TextInputLayout>
                     <android.support.design.widget.TextInputLayout
@@ -126,6 +129,7 @@
                             android:layout_height="match_parent"
                             android:inputType="number"
                             android:text=""
+                            android:textColor="@color/colorText"
                             android:hint="@string/prospect_postal_code"
                             />
                     </android.support.design.widget.TextInputLayout>
@@ -163,7 +167,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:spinnerMode="dialog"
-
+                        android:textColor="@color/colorText"
                         />
                     <ImageButton
                         android:id="@+id/button_search_colony"
@@ -200,6 +204,7 @@
                     android:hint="@string/prospect_email"
                     android:inputType="textEmailAddress"
                     android:text=""
+                    android:textColor="@color/colorText"
                     tools:layout_editor_absoluteX="72dp"
                     tools:layout_editor_absoluteY="199dp" />
             </android.support.design.widget.TextInputLayout>
