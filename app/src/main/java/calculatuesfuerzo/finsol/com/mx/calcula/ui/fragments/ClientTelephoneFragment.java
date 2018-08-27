@@ -102,7 +102,7 @@ public class ClientTelephoneFragment extends Fragment implements BlockingStep {
     private void bindUI(View view){
         sprTelephoneType= (Spinner)view.findViewById(R.id.spinnerTelephoneType);
         txtTelephone=(EditText)view.findViewById(R.id.editText_prospect_telephone);
-        txtInputLayouttelefono=(TextInputLayout)view.findViewById(R.id.textInputLayoutTelephone);
+        txtInputLayouttelefono=(TextInputLayout)view.findViewById(R.id.textInputLayoutFatherLastName);
     }
 
     private void telephoneType(){

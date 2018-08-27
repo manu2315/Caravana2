@@ -14,4 +14,6 @@
     <dimen name="edittext_margin_end_title">172dp</dimen>
     <dimen name="edittext_margin_start_title">6dp</dimen>
     <dimen name="padding_bottom">20dp</dimen>
+    <dimen name="padding_top_icon">60dp</dimen>
+    <dimen name="drawable_padding">2dp</dimen>
 </resources>

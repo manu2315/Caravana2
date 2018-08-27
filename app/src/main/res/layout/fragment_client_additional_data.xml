@@ -14,33 +14,69 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgvwIconAdditional"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:paddingTop="@dimen/padding_top_icon"
+                android:src="@drawable/ic_aditional_data_black_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewTituloDataClient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="@dimen/edittext_margin_end_title"
+                android:layout_marginStart="@dimen/edittext_margin_start_title"
+                android:layout_marginTop="8dp"
+                android:text="@string/datos_adicionales"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/lineayLayoutSpinnerLocationDays"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imgvwIconAdditional"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
             <LinearLayout
                 android:id="@+id/lineayLayoutSpinnerLocationDays"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="60dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginEnd="@dimen/edittext_margin_end"
+                android:layout_marginStart="@dimen/edittext_margin_start"
+                android:layout_marginTop="16dp"
 
                 android:orientation="vertical"
-                android:paddingTop="65dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/imgvwIconAdditional">
 
+                <TextView
+                    android:id="@+id/textViewGenere"
+                    style="@style/TextView.InputLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dias_localizacion" />
                 <calculatuesfuerzo.finsol.com.mx.calcula.util.MultiSpinner
                     android:id="@+id/multi_spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:spinnerMode="dropdown"
+                    />
 
             </LinearLayout>
             <TableLayout
                 android:id="@+id/tableLayout_location_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="60dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginEnd="@dimen/edittext_margin_end"
+                android:layout_marginStart="@dimen/edittext_margin_start"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -64,6 +100,7 @@
                             android:text=""
                             android:hint="@string/initial_location_time"
                             android:drawableLeft="@drawable/ic_access_time_black_24dp"
+                            android:drawablePadding="@dimen/drawable_padding"
 
                             />
                     </android.support.design.widget.TextInputLayout>
@@ -79,7 +116,8 @@
                             android:textIsSelectable="true"
                             android:text=""
                             android:hint="@string/final_location_time"
-                            android:drawableLeft="@drawable/ic_alarm_off_black_24dp"/>
+                            android:drawableLeft="@drawable/ic_alarm_off_black_24dp"
+                            android:drawablePadding="@dimen/drawable_padding"/>
                     </android.support.design.widget.TextInputLayout>
 
                 </TableRow>
@@ -88,8 +126,8 @@
                 android:id="@+id/lineayLayoutSpinnerExperienceInGroupCredit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="60dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginEnd="@dimen/edittext_margin_end"
+                android:layout_marginStart="@dimen/edittext_margin_start"
                 android:layout_marginTop="8dp"
 
                 android:orientation="vertical"
@@ -111,7 +149,7 @@
                     style="@style/Widget.AppCompat.Spinner.Underlined"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:spinnerMode="dialog"
+                    android:spinnerMode="dropdown"
 
                     />
             </LinearLayout>
@@ -119,8 +157,8 @@
                 android:id="@+id/lineayLayoutSpinnerCampaign"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="60dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginEnd="@dimen/edittext_margin_end"
+                android:layout_marginStart="@dimen/edittext_margin_start"
                 android:layout_marginTop="8dp"
 
                 android:orientation="vertical"
@@ -142,7 +180,7 @@
                     style="@style/Widget.AppCompat.Spinner.Underlined"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:spinnerMode="dialog"
+                    android:spinnerMode="dropdown"
 
                     />
             </LinearLayout>
@@ -150,8 +188,8 @@
                 android:id="@+id/lineayLayoutSpinnerStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="60dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginEnd="@dimen/edittext_margin_end"
+                android:layout_marginStart="@dimen/edittext_margin_start"
                 android:layout_marginTop="8dp"
 
                 android:orientation="vertical"
@@ -173,7 +211,7 @@
                     style="@style/Widget.AppCompat.Spinner.Underlined"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:spinnerMode="dialog"
+                    android:spinnerMode="dropdown"
 
                     />
             </LinearLayout>
@@ -181,10 +219,10 @@
                 android:id="@+id/linearLayoutBuroDeCredito"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="60dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginEnd="@dimen/edittext_margin_end"
+                android:layout_marginStart="@dimen/edittext_margin_start"
                 android:layout_marginTop="8dp"
-
+                android:paddingBottom="@dimen/padding_bottom"
                 android:orientation="horizontal"
 
                 app:layout_constraintEnd_toEndOf="parent"

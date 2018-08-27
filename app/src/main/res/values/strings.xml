@@ -68,6 +68,10 @@
     <string name="dialog.close">Close</string>
     <string name="dialog.error">Error</string>
     <string name="datos_cliente">Datos del Cliente</string>
+    <string name="direccion_cliente">Dirección del Cliente</string>
+    <string name="telefono_cliente">Teléfonos del Cliente</string>
+    <string name="dias_localizacion">Días de Localización</string>
+    <string name="datos_adicionales">Datos Adicionales</string>
     <!--PROBLEMA SIN PERMISOS FIN-->
 
 </resources>
