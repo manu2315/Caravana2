@@ -220,10 +220,11 @@ public class MainActivity extends AppCompatActivity
     //Metodos genericos
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_step);
+       /* DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_step);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else if(getSupportFragmentManager().getBackStackEntryCount()>0){
+        }else*/
+       if(getSupportFragmentManager().getBackStackEntryCount()>0){
             if(idFm>0) {
                 getSupportFragmentManager().popBackStack();
                 idFm--;
@@ -233,6 +234,7 @@ public class MainActivity extends AppCompatActivity
         else {
             super.onBackPressed();
         }
+
     }
 
     @Override

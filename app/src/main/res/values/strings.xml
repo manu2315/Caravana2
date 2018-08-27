@@ -47,8 +47,8 @@
     <string name="generate_file">Generar Reporte</string>
     <string name="others">Otros</string>
     <string name="add_prospects">Agregar Prospectos</string>
-    <string name="initial_location_time">Hora Inicial de Localización</string>
-    <string name="final_location_time">Hora Final de Localización</string>
+    <string name="initial_location_time">Inicio de Localización</string>
+    <string name="final_location_time">Fin de Localización</string>
     <string name="experience_in_group_credit">Experiencia en crédito grupal</string>
     <string name="campaign">Campaña</string>
     <string name="status">Estatus</string>
@@ -67,6 +67,7 @@
     <string name="dialog.message.client">Los datos de la petición son incorrectos por favor verifique: El apellido paterno, nombre y fecha de nacimiento.</string>
     <string name="dialog.close">Close</string>
     <string name="dialog.error">Error</string>
+    <string name="datos_cliente">Datos del Cliente</string>
     <!--PROBLEMA SIN PERMISOS FIN-->
 
 </resources>

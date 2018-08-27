@@ -63,7 +63,7 @@
                             android:layout_height="match_parent"
                             android:text=""
                             android:hint="@string/initial_location_time"
-                            android:drawableLeft="@drawable/ic_home_black_24dp"
+                            android:drawableLeft="@drawable/ic_access_time_black_24dp"
 
                             />
                     </android.support.design.widget.TextInputLayout>
@@ -79,7 +79,7 @@
                             android:textIsSelectable="true"
                             android:text=""
                             android:hint="@string/final_location_time"
-                            android:drawableLeft="@drawable/ic_home_black_24dp"/>
+                            android:drawableLeft="@drawable/ic_alarm_off_black_24dp"/>
                     </android.support.design.widget.TextInputLayout>
 
                 </TableRow>

@@ -68,6 +68,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
 
+
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
 
         findViewById(R.id.btnLogin).setOnClickListener(this);

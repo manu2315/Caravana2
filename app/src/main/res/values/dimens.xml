@@ -9,4 +9,9 @@
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="layout_height_tab_bar">160dp</dimen>
     <dimen name="imagen_provisional">380</dimen>
+    <dimen name="edittext_margin_start">34dp</dimen>
+    <dimen name="edittext_margin_end">8dp</dimen>
+    <dimen name="edittext_margin_end_title">172dp</dimen>
+    <dimen name="edittext_margin_start_title">6dp</dimen>
+    <dimen name="padding_bottom">20dp</dimen>
 </resources>

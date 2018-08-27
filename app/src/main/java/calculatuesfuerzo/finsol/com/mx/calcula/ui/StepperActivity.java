@@ -176,10 +176,12 @@ public class StepperActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_step);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        int currentStepPosition= mStepperLayout.getCurrentStepPosition();
+        if (currentStepPosition > 0) {
+            mStepperLayout.onBackClicked();
         } else {
-            super.onBackPressed();
+            backToMain();
+            finish();
         }
     }
 
