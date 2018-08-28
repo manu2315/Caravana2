@@ -9,6 +9,10 @@ public class TelefonoProvider {
     private Telefono telefono;
     private String tipo,numero;
 
+    public TelefonoProvider(TelefonoProviderListener telefonoProviderListener) {
+        this.telefonoProviderListener = telefonoProviderListener;
+    }
+
     public void setTelefono(Telefono telefono){
         setTelefono(telefono.getTipo(),telefono.getNumero());
     }

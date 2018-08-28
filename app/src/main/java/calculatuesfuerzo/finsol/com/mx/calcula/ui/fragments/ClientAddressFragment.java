@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,12 +27,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
-import calculatuesfuerzo.finsol.com.mx.calcula.models.Cliente;
 import calculatuesfuerzo.finsol.com.mx.calcula.models.Direccion;
-import calculatuesfuerzo.finsol.com.mx.calcula.providers.ClienteProvider;
 import calculatuesfuerzo.finsol.com.mx.calcula.providers.DireccionProvider;
-import calculatuesfuerzo.finsol.com.mx.calcula.providers.Errors;
-import calculatuesfuerzo.finsol.com.mx.calcula.util.Util;
+import calculatuesfuerzo.finsol.com.mx.calcula.providers.DireccionProviderListenerImpl;
+import calculatuesfuerzo.finsol.com.mx.calcula.util.Validaciones;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,13 +55,17 @@ public class ClientAddressFragment extends Fragment implements BlockingStep {
     //Model
     Direccion mDireccionModel;
 
-    Spinner spinnerColonia;
+    //Elements
+    private Spinner spinnerColonia;
     private List<String> listColonys;
     private ArrayAdapter<String> spinnerArrayAdapterColony;
-    Button btnNext,btnBack;
+    private EditText txtProspectDireccionCalle,txtProspectOutdoorNumber,txtProspectIndoorNumber,txtProspectCp,txtProspectEmail;
 
-    //pruebas
-    //Cliente cte;
+    //Validar
+    private DireccionProvider direccionProvider;
+    private Validaciones validar;
+    private String calle_,num_ext,num_int,cp_,colonia_,correo_;
+
     public ClientAddressFragment() {
         // Required empty public constructor
     }
@@ -113,6 +115,16 @@ public class ClientAddressFragment extends Fragment implements BlockingStep {
         listColonys.add("Buscar colonia");
         spinnerColonia=(Spinner)view.findViewById(R.id.spinnerColony);
         spinnerColonia.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.abc_edit_text_material));
+        //Edittext
+
+        txtProspectDireccionCalle=(EditText)view.findViewById(R.id.editText_prospect_Direccion_Calle);
+        txtProspectOutdoorNumber =(EditText)view.findViewById(R.id.editText_prospect_Outdoor_Number);
+        txtProspectIndoorNumber=(EditText)view.findViewById(R.id.editText_prospect_Indoor_Number);
+        txtProspectCp=(EditText)view.findViewById(R.id.editText_prospect_Cp);
+        txtProspectEmail=(EditText)view.findViewById(R.id.editText_prospect_Email);
+
+        //Provider
+        direccionProvider= new DireccionProvider(new DireccionProviderListenerImpl(getContext()));
 
 
     }
@@ -173,18 +185,18 @@ public class ClientAddressFragment extends Fragment implements BlockingStep {
 
     }
 
-    private void backDataClient(){
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mListener.fragmentClientData();
-            }
-        });
+
+
+    private void checkValues(){
+        validar= new Validaciones();
+        calle_ = validar.checkValue(txtProspectDireccionCalle);
+        num_ext=validar.checkValue(txtProspectOutdoorNumber);
+        num_int=txtProspectOutdoorNumber.getText().toString();
+        cp_=validar.checkValue(txtProspectCp);
+        //Es prueba
+        colonia_="Puesta del Sol";
+        correo_=validar.checkValue(txtProspectEmail);
     }
-
-
-
-
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -214,9 +226,12 @@ public class ClientAddressFragment extends Fragment implements BlockingStep {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
-                //cte= mListener.getCliente();
-                callback.goToNextStep();
+                checkValues();
+                if(validar.CORRECTO) {
+                    direccionProvider.setDireccion(calle_,num_ext,num_int,cp_,colonia_,correo_);
+                    mListener.setDireccion(direccionProvider.getDireccion());
+                    callback.goToNextStep();
+                }
             }
         },2000L);
     }

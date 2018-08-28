@@ -259,11 +259,16 @@ public class StepperActivity extends AppCompatActivity
     public void setClienteProvider(ClienteProvider clienteProvider_){
         this.clienteProvider=clienteProvider_;
     }
-
     public ClienteProvider getClienteProvider(){
         return this.clienteProvider;
     }
 
+    public void setCliente(Cliente cliente_){
+        clienteProvider.setCliente(cliente_);
+    }
+    public Cliente getCliente(){
+        return clienteProvider.getCliente();
+    }
     public void setDireccion(Direccion direccion){
         this.clienteProvider.setDireccion(direccion);
     }
@@ -271,19 +276,21 @@ public class StepperActivity extends AppCompatActivity
     public Direccion getDireccion(){
         return this.clienteProvider.getDireccion();
     }
+    public void setTelefono(Telefono telefono){
+        this.clienteProvider.setTelefono(telefono);
+    }
+    public Telefono getTelefono(){
+        return this.clienteProvider.getTelefono();
+    }
+    public void setAdicionales(Adicionales adicionales){
+        this.clienteProvider.setAdicionales(adicionales);
+    }
+    public Adicionales getAdicionales(){
+        return this.clienteProvider.getAdicionales();
+    }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-
-    }
-
-    @Override
-    public void fragmentClientAdditionalData() {
-
-    }
-
-    @Override
-    public void fragmentClientAddress() {
 
     }
 
@@ -314,35 +321,5 @@ public class StepperActivity extends AppCompatActivity
         //finish();
       //  Toast.makeText(this, "onReturn! Activity 1 -> ", Toast.LENGTH_SHORT).show();
     }
-
-
-    ////*****
-    //Set Modelos. Creo que ya no se uaran mas
-    /*public void setCliente(Cliente cliente_){
-        //this.cliente=cliente_;
-        clienteProvider.setCliente(cliente_);
-    }
-    public Cliente getCliente(){
-        return clienteProvider.getCliente();
-    }
-    public void setDireccion(Direccion direccion_){
-        this.direccion=direccion_;
-    }
-    public Direccion getDireccion(){
-        return this.direccion;
-    }
-    public void setTelefono(Telefono telefono_){
-        this.telefono=telefono_;
-    }
-    public Telefono getTelefono(){
-        return this.telefono;
-    }
-    public void setAdicionales(Adicionales adicionales_){
-        this.adicionales=adicionales_;
-    }
-    public Adicionales getAdicionales(){
-        return this.adicionales;
-    }*/
-
 
 }

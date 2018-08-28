@@ -27,6 +27,10 @@ import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
+import calculatuesfuerzo.finsol.com.mx.calcula.models.Telefono;
+import calculatuesfuerzo.finsol.com.mx.calcula.providers.TelefonoProvider;
+import calculatuesfuerzo.finsol.com.mx.calcula.providers.TelefonoProviderListenerImpl;
+import calculatuesfuerzo.finsol.com.mx.calcula.util.Validaciones;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,7 +62,10 @@ public class ClientTelephoneFragment extends Fragment implements BlockingStep {
     Button btnBack,btnNext;
     ImageView imgvwTelehpone;
 
-
+    //Validar
+    private TelefonoProvider telefonoProvider;
+    private Validaciones validar;
+    private String tipo_,numero_;
 
 
     public ClientTelephoneFragment() {
@@ -106,6 +113,8 @@ public class ClientTelephoneFragment extends Fragment implements BlockingStep {
         txtTelephone=(EditText)view.findViewById(R.id.editText_prospect_telephone);
         txtInputLayouttelefono=(TextInputLayout)view.findViewById(R.id.textInputLayoutTelephone);
         imgvwTelehpone = (ImageView)view.findViewById(R.id.imgvwTelehpone);
+        //Provider
+        telefonoProvider=new TelefonoProvider(new TelefonoProviderListenerImpl(getContext()));
     }
 
     private void telephoneType(){
@@ -147,6 +156,7 @@ public class ClientTelephoneFragment extends Fragment implements BlockingStep {
         sprTelephoneType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItemText = (String) parent.getItemAtPosition(position);
                 switch(position){
                     case 0:
                         txtTelephone.setVisibility(View.INVISIBLE);
@@ -161,6 +171,9 @@ public class ClientTelephoneFragment extends Fragment implements BlockingStep {
                         //txtTelephone.setHint(R.string.prospect_telephone);
                         img = getContext().getResources().getDrawable( R.drawable.ic_phone_black_24dp,null );
                         imgvwTelehpone.setImageDrawable(img);
+                        //Tipo
+                        tipo_=selectedItemText;
+
                         /*img.setBounds( 0, 0, 60, 60 );
                         txtTelephone.setCompoundDrawables( img, null, null, null );*/
                         break;
@@ -171,6 +184,8 @@ public class ClientTelephoneFragment extends Fragment implements BlockingStep {
                         //txtTelephone.setHint(R.string.prospect_cellphone);
                         img = getContext().getResources().getDrawable( R.drawable.ic_smartphone_android_black_24dp,null );
                         imgvwTelehpone.setImageDrawable(img);
+                        //Tipo
+                        tipo_=selectedItemText;
                         /*img.setBounds( 0, 0, 60, 60 );
                         txtTelephone.setCompoundDrawables( img, null, null, null );*/
                         break;
@@ -187,6 +202,11 @@ public class ClientTelephoneFragment extends Fragment implements BlockingStep {
         //material spinner Tipo Telefono FIN
     }
 
+    private void checkValues(){
+        validar= new Validaciones();
+        tipo_=validar.checkValue(tipo_);
+        numero_=validar.checkValue(txtTelephone);
+    }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -216,7 +236,12 @@ public class ClientTelephoneFragment extends Fragment implements BlockingStep {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                callback.goToNextStep();
+                checkValues();
+                if(validar.CORRECTO) {
+                    telefonoProvider.setTelefono(tipo_,numero_);
+                    mListener.setTelefono(telefonoProvider.getTelefono());
+                    callback.goToNextStep();
+                }
             }
         },2000L);
     }
@@ -258,7 +283,6 @@ public class ClientTelephoneFragment extends Fragment implements BlockingStep {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
-        void fragmentClientAdditionalData();
-        void fragmentClientAddress();
+        void setTelefono(Telefono telefono);
     }
 }

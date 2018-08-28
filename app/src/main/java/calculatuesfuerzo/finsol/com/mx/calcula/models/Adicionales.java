@@ -2,60 +2,75 @@ package calculatuesfuerzo.finsol.com.mx.calcula.models;
 
 import android.graphics.Bitmap;
 
+import java.util.ArrayList;
+
 import calculatuesfuerzo.finsol.com.mx.calcula.adapters.Model;
 
 public class Adicionales extends Model {
-    private String horaIncial,horaFinal,experienciaCreditoGrupal,campana,estatus;
-    private boolean consultarBuroDeCredito;
+    private ArrayList<String>dias_semana;
+    private String hora_inicial, hora_final, experiencia_credito_grupal,campana,estatus;
+    private boolean consultar_buro_de_credito;
     //Estas ultimas son para Storage de Firebase
     private Bitmap ineFrontal,ineReverso;
 
     public Adicionales() {
     }
 
-    public Adicionales(String horaIncial, String horaFinal, String experienciaCreditoGrupal, String campana, String estatus, boolean consultarBuroDeCredito) {
-        this.horaIncial = horaIncial;
-        this.horaFinal = horaFinal;
-        this.experienciaCreditoGrupal = experienciaCreditoGrupal;
+    public Adicionales(ArrayList<String> dias_semana, String hora_inicial, String hora_final, String experiencia_credito_grupal, String campana, String estatus, boolean consultar_buro_de_credito) {
+        this.dias_semana = dias_semana;
+        this.hora_inicial = hora_inicial;
+        this.hora_final = hora_final;
+        this.experiencia_credito_grupal = experiencia_credito_grupal;
         this.campana = campana;
         this.estatus = estatus;
-        this.consultarBuroDeCredito = consultarBuroDeCredito;
+        this.consultar_buro_de_credito = consultar_buro_de_credito;
     }
 
     //Este constructor es para cuando se puedan guardar las INE por delante y detras
-    public Adicionales(String horaIncial, String horaFinal, String experienciaCreditoGrupal, String campana, String estatus, boolean consultarBuroDeCredito, Bitmap ineFrontal, Bitmap ineReverso) {
-        this.horaIncial = horaIncial;
-        this.horaFinal = horaFinal;
-        this.experienciaCreditoGrupal = experienciaCreditoGrupal;
+
+
+    public Adicionales(ArrayList<String> dias_semana, String hora_inicial, String hora_final, String experiencia_credito_grupal, String campana, String estatus, boolean consultar_buro_de_credito, Bitmap ineFrontal, Bitmap ineReverso) {
+        this.dias_semana = dias_semana;
+        this.hora_inicial = hora_inicial;
+        this.hora_final = hora_final;
+        this.experiencia_credito_grupal = experiencia_credito_grupal;
         this.campana = campana;
         this.estatus = estatus;
-        this.consultarBuroDeCredito = consultarBuroDeCredito;
+        this.consultar_buro_de_credito = consultar_buro_de_credito;
         this.ineFrontal = ineFrontal;
         this.ineReverso = ineReverso;
     }
 
-    public String getHoraIncial() {
-        return horaIncial;
+    public ArrayList<String> getDias_semana() {
+        return dias_semana;
     }
 
-    public void setHoraIncial(String horaIncial) {
-        this.horaIncial = horaIncial;
+    public void setDias_semana(ArrayList<String> dias_semana) {
+        this.dias_semana = dias_semana;
     }
 
-    public String getHoraFinal() {
-        return horaFinal;
+    public String getHora_inicial() {
+        return hora_inicial;
     }
 
-    public void setHoraFinal(String horaFinal) {
-        this.horaFinal = horaFinal;
+    public void setHora_inicial(String hora_inicial) {
+        this.hora_inicial = hora_inicial;
     }
 
-    public String getExperienciaCreditoGrupal() {
-        return experienciaCreditoGrupal;
+    public String getHora_final() {
+        return hora_final;
     }
 
-    public void setExperienciaCreditoGrupal(String experienciaCreditoGrupal) {
-        this.experienciaCreditoGrupal = experienciaCreditoGrupal;
+    public void setHora_final(String hora_final) {
+        this.hora_final = hora_final;
+    }
+
+    public String getExperiencia_credito_grupal() {
+        return experiencia_credito_grupal;
+    }
+
+    public void setExperiencia_credito_grupal(String experiencia_credito_grupal) {
+        this.experiencia_credito_grupal = experiencia_credito_grupal;
     }
 
     public String getCampana() {
@@ -74,12 +89,12 @@ public class Adicionales extends Model {
         this.estatus = estatus;
     }
 
-    public boolean isConsultarBuroDeCredito() {
-        return consultarBuroDeCredito;
+    public boolean isConsultar_buro_de_credito() {
+        return consultar_buro_de_credito;
     }
 
-    public void setConsultarBuroDeCredito(boolean consultarBuroDeCredito) {
-        this.consultarBuroDeCredito = consultarBuroDeCredito;
+    public void setConsultar_buro_de_credito(boolean consultar_buro_de_credito) {
+        this.consultar_buro_de_credito = consultar_buro_de_credito;
     }
 
     public Bitmap getIneFrontal() {
@@ -101,12 +116,12 @@ public class Adicionales extends Model {
     @Override
     public String toString() {
         return "Adicionales{" +
-                "horaIncial='" + horaIncial + '\'' +
-                ", horaFinal='" + horaFinal + '\'' +
-                ", experienciaCreditoGrupal='" + experienciaCreditoGrupal + '\'' +
+                "hora_inicial='" + hora_inicial + '\'' +
+                ", hora_final='" + hora_final + '\'' +
+                ", experiencia_credito_grupal='" + experiencia_credito_grupal + '\'' +
                 ", campana='" + campana + '\'' +
                 ", estatus='" + estatus + '\'' +
-                ", consultarBuroDeCredito=" + consultarBuroDeCredito +
+                ", consultar_buro_de_credito=" + consultar_buro_de_credito +
                 ", ineFrontal=" + ineFrontal +
                 ", ineReverso=" + ineReverso +
                 '}';

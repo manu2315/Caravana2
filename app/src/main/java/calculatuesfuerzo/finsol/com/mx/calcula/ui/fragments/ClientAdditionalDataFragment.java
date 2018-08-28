@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -31,8 +32,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
+import calculatuesfuerzo.finsol.com.mx.calcula.models.Adicionales;
+import calculatuesfuerzo.finsol.com.mx.calcula.providers.AdicionalesProvider;
+import calculatuesfuerzo.finsol.com.mx.calcula.providers.AdicionalesProviderListenerImpl;
+import calculatuesfuerzo.finsol.com.mx.calcula.util.Constantes;
 import calculatuesfuerzo.finsol.com.mx.calcula.util.MultiSpinner;
 import calculatuesfuerzo.finsol.com.mx.calcula.util.TimePickerFragment;
+import calculatuesfuerzo.finsol.com.mx.calcula.util.Validaciones;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,20 +63,27 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
     //vars
     MultiSpinner multiSpinner;//Dias de la semana
     ArrayList<String> dias;
-    String[] diasArray = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"};
+    //String[] diasArray = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"};
 
     private MultiSpinner.MultiSpinnerListener listener;
     EditText txtIntialTime, txtFinalTime;
 
     //Spnners
     Spinner spinnerExperienceInGroupCredit, spinnerCampaign, spinnerStatus;
-    private String[] arrayGrupalExperience = {"Elige la experiencia grupal", "Si", "No"};
+    //private String[] arrayGrupalExperience = {"Elige la experiencia grupal", "Si", "No"};
     private ArrayAdapter<String> spinnerArrayAdapterGrupalExperience;
-    private String[] arrayCampaign = {"Elige una opción", "Sin campaña", "1 iguala y Supera Plus"};
+    //private String[] arrayCampaign = {"Elige una opción", "Sin campaña", "1 iguala y Supera Plus"};
     private ArrayAdapter<String> spinnerArrayAdapterCampaign;
 
-    private String[] arrayStatus = {"Elige un estatus", "Contactar posteriormente", "Interesado", "Rechazado"};
+    // String[] arrayStatus = {"Elige un estatus", "Contactar posteriormente", "Interesado", "Rechazado"};
     private ArrayAdapter<String> spinnerArrayAdapterStatus;
+
+    //Validar
+    private AdicionalesProvider adicionalesProvider;
+    private Validaciones validar;
+    private String hora_inicial, hora_final, experiencia_credito_grupal,campana,estatus;
+    private boolean consultar_buro_de_credito;
+    private ArrayList<String> dias_semana;
 
     public ClientAdditionalDataFragment() {
         // Required empty public constructor
@@ -143,7 +156,8 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
         multiSpinner = (MultiSpinner) view.findViewById(R.id.multi_spinner);
 
 
-        dias = new ArrayList<>(Arrays.asList(diasArray));
+        //diasArray
+        dias = new ArrayList<>(Arrays.asList(Constantes.DIAS_SEMANA));
         listener = new MultiSpinner.MultiSpinnerListener() {
             @Override
             public void onItemsSelected(boolean[] selected) {
@@ -157,6 +171,10 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
         };
 
         multiSpinner.setItems(dias, getString(R.string.prospect_locationDays_for_all), listener);
+
+        //Provider
+        adicionalesProvider = new AdicionalesProvider(new AdicionalesProviderListenerImpl(getContext()));
+        dias_semana = new ArrayList<String>();
 
     }
 
@@ -190,8 +208,9 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
 
     private void ExperienceInGroupCredit() {
         //material spinner Genero INICIO
+        //arrayGrupalExperience
         spinnerArrayAdapterGrupalExperience = new ArrayAdapter<String>(
-                getContext(), R.layout.spinner_item, arrayGrupalExperience) {
+                getContext(), R.layout.spinner_item,Constantes.EXPERIENCIA_GRUPAL ) {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
@@ -247,8 +266,9 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
     private void Campaign() {
         //material spinner Genero INICIO
 
+        //arrayCampaign
         spinnerArrayAdapterCampaign = new ArrayAdapter<String>(
-                getContext(), R.layout.spinner_item, arrayCampaign) {
+                getContext(), R.layout.spinner_item, Constantes.CAMPANA) {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
@@ -303,10 +323,9 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
 
     private void Status() {
         //material spinner Genero INICIO
-
-
+        //arrayStatus
         spinnerArrayAdapterStatus = new ArrayAdapter<String>(
-                getContext(), R.layout.spinner_item, arrayStatus) {
+                getContext(), R.layout.spinner_item,Constantes.ESTATUS ) {
             @Override
             public boolean isEnabled(int position) {
                 if (position == 0) {
@@ -358,6 +377,12 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
         //material spinner Genero FIN
     }
 
+    private void checkValues() {
+        validar= new Validaciones();
+
+
+
+    }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -383,9 +408,22 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
     }
 
     @Override
-    public void onNextClicked(StepperLayout.OnNextClickedCallback callback) {
-        callback.goToNextStep();
+    public void onNextClicked(final StepperLayout.OnNextClickedCallback callback) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                checkValues();
+                if(validar.CORRECTO) {
+
+                    //falta provider
+                    //falta listener
+                    callback.goToNextStep();
+                }
+            }
+        },2000L);
     }
+
+
 
     @Override
     public void onCompleteClicked(StepperLayout.OnCompleteClickedCallback callback) {
@@ -416,5 +454,6 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+        void setAdicionales(Adicionales adicionales);
     }
 }

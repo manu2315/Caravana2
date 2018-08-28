@@ -193,7 +193,7 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
                     /*Toast.makeText
                             (getContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
                             .show();*/
-                    gen=selectedItemText.toString();
+                    gen=selectedItemText;
                 }
             }
 
