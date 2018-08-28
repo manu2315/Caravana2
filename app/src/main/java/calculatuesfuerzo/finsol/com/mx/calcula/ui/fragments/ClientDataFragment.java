@@ -26,11 +26,10 @@ import com.stepstone.stepper.VerificationError;
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
 import calculatuesfuerzo.finsol.com.mx.calcula.models.Cliente;
 import calculatuesfuerzo.finsol.com.mx.calcula.providers.ClienteProvider;
-import calculatuesfuerzo.finsol.com.mx.calcula.providers.Errors;
+import calculatuesfuerzo.finsol.com.mx.calcula.providers.ClienteProviderListenerImpl;
 import calculatuesfuerzo.finsol.com.mx.calcula.util.DatePickerFragment;
-import calculatuesfuerzo.finsol.com.mx.calcula.providers.Provider;
 import calculatuesfuerzo.finsol.com.mx.calcula.util.MyAlertDialogFragment;
-import calculatuesfuerzo.finsol.com.mx.calcula.util.Util;
+import calculatuesfuerzo.finsol.com.mx.calcula.util.Validaciones;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -79,7 +78,11 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
     EditText txtProsctoApellPat,txtProsctoApellMat,txtProsctoNombre,txtFechaNacimiento,txtProsctoRfc;
     Spinner spinnerGenero;
 
+    //Providers
+    ClienteProvider clienteProvider;
 
+    //Utils
+    Validaciones validar;
 
 
 
@@ -137,6 +140,7 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
         spinnerGenero=(Spinner)view.findViewById(R.id.spinnerG);
         //spinnerColonia=(Spinner)view.findViewById(R.id.spinnerColony);
         //btnNext=(Button)view.findViewById(R.id.button_Next);
+        clienteProvider = new ClienteProvider(new ClienteProviderListenerImpl(getContext()));
 
 
 
@@ -202,7 +206,7 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
 
     }
 
-    private boolean checkValues(String cadena){
+    /*private boolean checkValues(String cadena){
         if(cadena.equals("")){
             save=false;
             return save;
@@ -212,29 +216,27 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
     }
     private boolean checkValues(EditText editText){
          return checkValues(editText.getText().toString());
-    }
+    }*/
     private void errorAlert(){
         MyAlertDialogFragment dialogFragment = new MyAlertDialogFragment();
         dialogFragment.show(getFragmentManager(), "Error Alert");
 
     }
-    private void getValues(){
+    private void checkValues(){
 
-        if(checkValues(txtProsctoApellPat))
-            ap_pat=txtProsctoApellPat.getText().toString();
-
-        //Ap materno no obligatorio
+        validar =new Validaciones();
+        ap_pat= validar.checkValue(txtProsctoApellPat);
         if(!txtProsctoApellMat.getText().toString().equals(""))
             ap_mat=txtProsctoApellMat.getText().toString();
         else
             ap_mat=SIN_APE_MAT;
-        if(checkValues(txtProsctoNombre))
-            nom=txtProsctoNombre.getText().toString();
-        if(checkValues(txtFechaNacimiento))
-            fecha=txtFechaNacimiento.getText().toString();
+        nom=validar.checkValue(txtProsctoNombre);
+        fecha=validar.checkValue(txtFechaNacimiento);
         //Falta definir funcion RFC
         rfc="BELE910104HSBCRM01";//**********
-        checkValues(gen);
+        gen= validar.checkValue(gen);
+
+
     }
     /*private void nuevoCliente(){
         client = new Cliente(ap_pat,ap_mat,nom,fecha,rfc,gen);
@@ -251,25 +253,6 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
         });
     }
 
-    class ClienteProviderListenerImpl implements ClienteProvider.ClienteProviderListener{
-        @Override
-        public void onResponse(Cliente clienteModel) {
-            //Fatla un progressbar//*******
-            // mBinding.progressBar.setVisibility(View.GONE);
-            mClienteModel=clienteModel;
-        }
-
-        @Override
-        public void onErrorResponse(Errors error) {
-            //Fatla un progressbar//*******
-            // mBinding.progressBar.setVisibility(View.GONE);
-            if(error==Errors.INTERNET_CONECTION_ERROR){
-                Util.infoDialog(getContext(),R.string.dialog_internet_problem_message,R.string.dialog_internet_problem_positive_button_label).show();
-            }else if (error==Errors.UNKNOWN || error==Errors.PARSE_ERROR){
-                Util.infoDialog(getContext(), R.string.dialog_unknown_problem_message, R.string.dialog_unknown_problem_positive_button_label).show();
-            }
-        }
-    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -315,17 +298,13 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                getValues();
-                //depues de getValues se envian los valores
-                //solo si save = true
-                if(save){
+
+                checkValues();
+                if(validar.CORRECTO){
                    // nuevoCliente();
                     //Provider.pushValue(PATH,client);
-
-                    //se comentaran acciones para revision
-                    //ClienteProvider clienteProvider = new ClienteProvider(new ClienteProviderListenerImpl());
-                    //clienteProvider.nuevoCliente(ap_pat,ap_mat,nom,fecha,rfc,gen);
-
+                    clienteProvider.setCliente(ap_pat,ap_mat,nom,fecha,rfc,gen);
+                    mListener.setClienteProvider(clienteProvider);
                     callback.goToNextStep();
                 }
                 else{
@@ -353,6 +332,6 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
         void backToMain();
-
+        void setClienteProvider(ClienteProvider clienteProvider_);
     }
 }

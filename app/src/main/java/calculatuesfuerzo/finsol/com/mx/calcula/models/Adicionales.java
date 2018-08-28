@@ -7,7 +7,33 @@ import calculatuesfuerzo.finsol.com.mx.calcula.adapters.Model;
 public class Adicionales extends Model {
     private String horaIncial,horaFinal,experienciaCreditoGrupal,campana,estatus;
     private boolean consultarBuroDeCredito;
+    //Estas ultimas son para Storage de Firebase
     private Bitmap ineFrontal,ineReverso;
+
+    public Adicionales() {
+    }
+
+    public Adicionales(String horaIncial, String horaFinal, String experienciaCreditoGrupal, String campana, String estatus, boolean consultarBuroDeCredito) {
+        this.horaIncial = horaIncial;
+        this.horaFinal = horaFinal;
+        this.experienciaCreditoGrupal = experienciaCreditoGrupal;
+        this.campana = campana;
+        this.estatus = estatus;
+        this.consultarBuroDeCredito = consultarBuroDeCredito;
+    }
+
+    //Este constructor es para cuando se puedan guardar las INE por delante y detras
+    public Adicionales(String horaIncial, String horaFinal, String experienciaCreditoGrupal, String campana, String estatus, boolean consultarBuroDeCredito, Bitmap ineFrontal, Bitmap ineReverso) {
+        this.horaIncial = horaIncial;
+        this.horaFinal = horaFinal;
+        this.experienciaCreditoGrupal = experienciaCreditoGrupal;
+        this.campana = campana;
+        this.estatus = estatus;
+        this.consultarBuroDeCredito = consultarBuroDeCredito;
+        this.ineFrontal = ineFrontal;
+        this.ineReverso = ineReverso;
+    }
+
     public String getHoraIncial() {
         return horaIncial;
     }

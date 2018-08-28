@@ -25,6 +25,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,12 @@ import java.net.URL;
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
 import calculatuesfuerzo.finsol.com.mx.calcula.adapters.MyStepperAdapter;
 import calculatuesfuerzo.finsol.com.mx.calcula.adapters.user.UserSingleton;
+import calculatuesfuerzo.finsol.com.mx.calcula.models.Adicionales;
+import calculatuesfuerzo.finsol.com.mx.calcula.models.Cliente;
+import calculatuesfuerzo.finsol.com.mx.calcula.models.Direccion;
+import calculatuesfuerzo.finsol.com.mx.calcula.models.Telefono;
+import calculatuesfuerzo.finsol.com.mx.calcula.providers.ClienteProvider;
+import calculatuesfuerzo.finsol.com.mx.calcula.providers.ClienteProviderListenerImpl;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientAdditionalDataFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientAddressFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientDataFragment;
@@ -70,6 +77,16 @@ public class StepperActivity extends AppCompatActivity
     CircleImageView imageViewUser;
     TextView textViewUserMail,textViewUserName,textViewUserNumber;
     FirebaseUser user;
+
+
+    //Modelos
+    //Cliente cliente;
+    Direccion direccion;
+    Telefono telefono;
+    Adicionales adicionales;
+
+    //Providers
+    ClienteProvider clienteProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +136,9 @@ public class StepperActivity extends AppCompatActivity
         textViewUserNumber=(TextView)findViewById(R.id.user_rol);
         datosUserLogin();
         appBarLayout=(AppBarLayout)findViewById(R.id.app_bar_step);
+
+        //Privider
+        //clienteProvider = new ClienteProvider(new ClienteProviderListenerImpl(this));
     }
 
     private void datosUserLogin(){
@@ -234,6 +254,24 @@ public class StepperActivity extends AppCompatActivity
         return true;
     }
 
+    //La vista es tonta solo muestra y pasa datos NO hace operaciones
+    //**************
+    public void setClienteProvider(ClienteProvider clienteProvider_){
+        this.clienteProvider=clienteProvider_;
+    }
+
+    public ClienteProvider getClienteProvider(){
+        return this.clienteProvider;
+    }
+
+    public void setDireccion(Direccion direccion){
+        this.clienteProvider.setDireccion(direccion);
+    }
+
+    public Direccion getDireccion(){
+        return this.clienteProvider.getDireccion();
+    }
+
     @Override
     public void onFragmentInteraction(Uri uri) {
 
@@ -255,11 +293,6 @@ public class StepperActivity extends AppCompatActivity
     }
 
     @Override
-    public void fragmentClientTelephone() {
-
-    }
-
-    @Override
     public void onCompleted(View completeButton) {
 
      //   Toast.makeText(this, "onCompleted! Activity 1", Toast.LENGTH_SHORT).show();
@@ -273,6 +306,7 @@ public class StepperActivity extends AppCompatActivity
     @Override
     public void onStepSelected(int newStepPosition) {
        // Toast.makeText(this, "onStepSelected! Activity 1 -> " + newStepPosition, Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -282,6 +316,33 @@ public class StepperActivity extends AppCompatActivity
     }
 
 
+    ////*****
+    //Set Modelos. Creo que ya no se uaran mas
+    /*public void setCliente(Cliente cliente_){
+        //this.cliente=cliente_;
+        clienteProvider.setCliente(cliente_);
+    }
+    public Cliente getCliente(){
+        return clienteProvider.getCliente();
+    }
+    public void setDireccion(Direccion direccion_){
+        this.direccion=direccion_;
+    }
+    public Direccion getDireccion(){
+        return this.direccion;
+    }
+    public void setTelefono(Telefono telefono_){
+        this.telefono=telefono_;
+    }
+    public Telefono getTelefono(){
+        return this.telefono;
+    }
+    public void setAdicionales(Adicionales adicionales_){
+        this.adicionales=adicionales_;
+    }
+    public Adicionales getAdicionales(){
+        return this.adicionales;
+    }*/
 
 
 }

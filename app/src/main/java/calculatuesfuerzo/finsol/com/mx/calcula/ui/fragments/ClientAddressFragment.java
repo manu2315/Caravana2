@@ -27,6 +27,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
+import calculatuesfuerzo.finsol.com.mx.calcula.models.Cliente;
+import calculatuesfuerzo.finsol.com.mx.calcula.models.Direccion;
+import calculatuesfuerzo.finsol.com.mx.calcula.providers.ClienteProvider;
+import calculatuesfuerzo.finsol.com.mx.calcula.providers.DireccionProvider;
+import calculatuesfuerzo.finsol.com.mx.calcula.providers.Errors;
+import calculatuesfuerzo.finsol.com.mx.calcula.util.Util;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,10 +54,16 @@ public class ClientAddressFragment extends Fragment implements BlockingStep {
 
     private OnFragmentInteractionListener mListener;
 
+    //Model
+    Direccion mDireccionModel;
+
     Spinner spinnerColonia;
     private List<String> listColonys;
     private ArrayAdapter<String> spinnerArrayAdapterColony;
     Button btnNext,btnBack;
+
+    //pruebas
+    //Cliente cte;
     public ClientAddressFragment() {
         // Required empty public constructor
     }
@@ -90,6 +102,8 @@ public class ClientAddressFragment extends Fragment implements BlockingStep {
         View view= inflater.inflate(R.layout.fragment_client_address, container, false);
         bindUI(view);
         colonia();
+        //Prueba
+
 
         return view;
     }
@@ -168,6 +182,9 @@ public class ClientAddressFragment extends Fragment implements BlockingStep {
         });
     }
 
+
+
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -197,10 +214,14 @@ public class ClientAddressFragment extends Fragment implements BlockingStep {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+
+                //cte= mListener.getCliente();
                 callback.goToNextStep();
             }
         },2000L);
     }
+
+
 
     @Override
     public void onCompleteClicked(StepperLayout.OnCompleteClickedCallback callback) {
@@ -240,7 +261,9 @@ public class ClientAddressFragment extends Fragment implements BlockingStep {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
         void fragmentClientData();
-        void fragmentClientTelephone();
+        void setDireccion(Direccion direccion);
+
+
 
     }
 }

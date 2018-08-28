@@ -3,14 +3,26 @@ package calculatuesfuerzo.finsol.com.mx.calcula.models;
 import calculatuesfuerzo.finsol.com.mx.calcula.adapters.Model;
 
 public class Direccion extends Model {
-    private String direccionCalle,numeroExterior,numeroInterior,cp,colonia,correo;
+    private String calle,numeroExterior,numeroInterior,cp,colonia,correo;
 
-    public String getDireccionCalle() {
-        return direccionCalle;
+    public Direccion() {
     }
 
-    public void setDireccionCalle(String direccionCalle) {
-        this.direccionCalle = direccionCalle;
+    public Direccion(String calle, String numeroExterior, String numeroInterior, String cp, String colonia, String correo) {
+        this.calle = calle;
+        this.numeroExterior = numeroExterior;
+        this.numeroInterior = numeroInterior;
+        this.cp = cp;
+        this.colonia = colonia;
+        this.correo = correo;
+    }
+
+    public String getCalle() {
+        return calle;
+    }
+
+    public void setCalle(String calle) {
+        this.calle = calle;
     }
 
     public String getNumeroExterior() {
@@ -56,7 +68,7 @@ public class Direccion extends Model {
     @Override
     public String toString() {
         return "Direccion{" +
-                "direccionCalle='" + direccionCalle + '\'' +
+                "calle='" + calle + '\'' +
                 ", numeroExterior='" + numeroExterior + '\'' +
                 ", numeroInterior='" + numeroInterior + '\'' +
                 ", cp='" + cp + '\'' +
