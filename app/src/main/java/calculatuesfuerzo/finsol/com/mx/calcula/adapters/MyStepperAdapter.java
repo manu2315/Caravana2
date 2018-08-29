@@ -32,6 +32,15 @@ public  class MyStepperAdapter extends AbstractFragmentStepAdapter {
     @Override
     public Step createStep(int position) {
         switch (position){
+            /*case 0:
+                final CompleteFragment step= new CompleteFragment();
+                Bundle b = new Bundle();
+                b.putInt(CURRENT_STEP_POSITION_KEY, position);
+                step.setArguments(b);
+                return step;*/
+
+
+            //aumentaremos 1 mas para pruebas
             case 0:
                 final ClientDataFragment step1= new ClientDataFragment();
                 Bundle b1 = new Bundle();
@@ -80,6 +89,17 @@ public  class MyStepperAdapter extends AbstractFragmentStepAdapter {
                 //.setTitle("Hola Mundo!!");
         //INICIO
         switch (position){
+
+            /*case 0:
+                builder.setTitle("Datos Recabados")
+                        .setEndButtonLabel("Siguiente")
+                        .setBackButtonLabel("Cancelar")
+                        .setBackButtonVisible(true)
+                        .setNextButtonEndDrawableResId(R.drawable.ic_arrow_forward_24dp)
+                        .setBackButtonStartDrawableResId(StepViewModel.NULL_DRAWABLE);
+
+                break;*/
+            //aumentaos 1 para pruebas
             case 0:
                 builder.setTitle("Cliente")
                         .setEndButtonLabel("Siguiente")
@@ -125,51 +145,6 @@ public  class MyStepperAdapter extends AbstractFragmentStepAdapter {
         }
        //FIN
         return builder.create();
-
-
-        /*
-         StepViewModel.Builder builder = new StepViewModel.Builder(context)
-                .setTitle(R.string.tab_title);
-        switch (position) {
-            case 0:
-                builder
-                    .setEndButtonLabel("This way")
-                    .setBackButtonLabel("Cancel")
-                    .setNextButtonEndDrawableResId(R.drawable.ms_forward_arrow)
-                    .setBackButtonStartDrawableResId(StepViewModel.NULL_DRAWABLE);
-                break;
-            case 1:
-                builder
-                    .setEndButtonLabel(R.string.go_to_summary)
-                    .setBackButtonLabel("Go to first")
-                    .setBackButtonStartDrawableResId(R.drawable.ms_back_arrow);
-                break;
-            case 2:
-                builder
-                    .setBackButtonLabel("Go back")
-                    .setEndButtonLabel("I'm done!");
-                break;
-            default:
-                throw new IllegalArgumentException("Unsupported position: " + position);
-        }
-        return builder.create();
-        */
-
-        /*switch (position){
-            case 0:
-                return new StepViewModel.Builder(context)
-                        .setTitle("Cliente") //can be a CharSequence instead
-                        .create();
-            case 1:
-                return new StepViewModel.Builder(context)
-                        .setTitle("Dirección") //can be a CharSequence instead
-                        .create();
-            case 2:
-                return new StepViewModel.Builder(context)
-                        .setTitle("Teléfono") //can be a CharSequence instead
-                        .create();
-        }
-        return null;*/
     }
 
 }

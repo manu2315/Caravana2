@@ -44,14 +44,17 @@ import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientAdditionalData
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientAddressFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientDataFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientTelephoneFragment;
+import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.CompleteFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.HomeFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.util.Constantes;
 import calculatuesfuerzo.finsol.com.mx.calcula.util.Util;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,HomeFragment.OnFragmentInteractionListener,ClientDataFragment.OnFragmentInteractionListener,
-        ClientAddressFragment.OnFragmentInteractionListener,ClientTelephoneFragment.OnFragmentInteractionListener,ClientAdditionalDataFragment.OnFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener,HomeFragment.OnFragmentInteractionListener,
+        ClientDataFragment.OnFragmentInteractionListener, ClientAddressFragment.OnFragmentInteractionListener,
+        ClientTelephoneFragment.OnFragmentInteractionListener,
+        ClientAdditionalDataFragment.OnFragmentInteractionListener,CompleteFragment.OnFragmentInteractionListener{
 
 
     //INICIO VARIABLES
@@ -345,6 +348,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    @Override
+    public ClienteProvider getClienteProvider() {
+        return null;
     }
 
     @Override

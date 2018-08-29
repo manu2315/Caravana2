@@ -235,7 +235,7 @@
                     style="@style/TextView.InputLabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/genere_client" />
+                    android:text="@string/prospect_genere" />
 
                 <android.support.v7.widget.AppCompatSpinner
                     android:id="@+id/spinnerG"

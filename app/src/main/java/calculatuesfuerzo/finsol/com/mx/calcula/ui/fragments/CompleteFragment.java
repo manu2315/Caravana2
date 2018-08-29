@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,14 @@ import com.stepstone.stepper.BlockingStep;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
+import calculatuesfuerzo.finsol.com.mx.calcula.adapters.ReviewAdapter;
+import calculatuesfuerzo.finsol.com.mx.calcula.models.Cliente;
+import calculatuesfuerzo.finsol.com.mx.calcula.models.Direccion;
+import calculatuesfuerzo.finsol.com.mx.calcula.providers.ClienteProvider;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +44,13 @@ public class CompleteFragment extends Fragment implements BlockingStep {
 
     private OnFragmentInteractionListener mListener;
 
+
+    //Cardviews
+    ReviewAdapter reviewAdapter;
+    RecyclerView recyclerView;
+    List<Cliente> clientes;
+    Cliente cte;
+    Direccion dir;
     public CompleteFragment() {
         // Required empty public constructor
     }
@@ -72,7 +87,22 @@ public class CompleteFragment extends Fragment implements BlockingStep {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_complete, container, false);
+        bindUI(view);
         return view;
+    }
+
+    private void bindUI(View view){
+
+        cte = new Cliente("pat","mat","nom","08/08/08","abcdefg","mas");
+        dir =new Direccion("A","180","","23090","Obregon","a@b.c");
+        cte.setDireccion(dir);
+        clientes=new ArrayList<>();
+        //clientes.add(mListener.getClienteProvider().getCliente());
+        clientes.add(cte);
+        reviewAdapter= new ReviewAdapter(getActivity(),clientes);
+        recyclerView= (RecyclerView)view.findViewById(R.id.recycler_view_all_data);
+        recyclerView.setAdapter(reviewAdapter);
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -145,5 +175,6 @@ public class CompleteFragment extends Fragment implements BlockingStep {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+        ClienteProvider getClienteProvider();
     }
 }

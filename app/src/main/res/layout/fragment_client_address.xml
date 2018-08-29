@@ -40,7 +40,7 @@
                 android:layout_marginEnd="@dimen/edittext_margin_end_title"
                 android:layout_marginStart="@dimen/edittext_margin_start_title"
                 android:layout_marginTop="8dp"
-                android:text="@string/direccion_cliente"
+                android:text="@string/prospect_address_title"
                 android:textSize="@dimen/title_size"
                 app:layout_constraintBottom_toTopOf="@+id/textInputLayoutAddress"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -154,7 +154,7 @@
                     style="@style/TextView.InputLabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Colonia" />
+                    android:text="@string/prospect_colony" />
 
                 <RelativeLayout
                     android:id="@+id/relativeLayoutColony"

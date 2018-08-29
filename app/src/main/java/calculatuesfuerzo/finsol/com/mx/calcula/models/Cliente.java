@@ -12,7 +12,8 @@ public class Cliente extends Model {
     public Cliente() {
     }
 
-    public Cliente(String apellidoPaterno, String apellidoMaterno, String nombre, String fechaDeNacimiento, String rfc, String genero) {
+    public Cliente(String apellidoPaterno, String apellidoMaterno, String nombre,
+                   String fechaDeNacimiento, String rfc, String genero) {
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
         this.nombre = nombre;

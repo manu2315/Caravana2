@@ -26,21 +26,20 @@
 
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="prospect_data_text">Datos del Cliente</string>
-    <string name="prospect_name">Nombre</string>
-    <string name="prospect_father_lastname">Apellido Paterno</string>
+    <string name="prospect_data_title">Datos del Cliente</string>
+    <string name="prospect_name">Nombre*</string>
+    <string name="prospect_father_lastname">Apellido Paterno*</string>
     <string name="prospect_mother_lastname">Apellido Materno</string>
-    <string name="prospect_birthdate">Fecha de nacimiento</string>
-    <string name="prospect_rfc">RFC</string>
-    <string name="prospect_genere">Género</string>
-    <string name="prospect_address_principal_street">Dirección calle</string>
-    <string name="prospect_ex">Dirección calle</string>outdoor_number
-    <string name="prospect_outdoor_number">No.Exterior</string>
+    <string name="prospect_birthdate">Fecha de nacimiento*</string>
+    <string name="prospect_rfc">RFC*</string>
+    <string name="prospect_genere">Género*</string>
+    <string name="prospect_address_principal_street">Dirección calle*</string>
+    <string name="prospect_outdoor_number">No.Exterior*</string>
     <string name="prospect_indoor_number">No.Interior</string>
-    <string name="prospect_postal_code">C.P.</string>
-    <string name="prospect_colony">Colonia</string>
+    <string name="prospect_postal_code">C.P.*</string>
+    <string name="prospect_colony">Colonia*</string>
     <string name="prospect_email">Correo Electrónico</string>
-    <string name="prospect_telephone_type">Tipo de Teléfono</string>
+    <string name="prospect_telephone_type">Tipo de Teléfono*</string>
     <string name="prospect_telephone">Teléfono </string>
     <string name="prospect_cellphone">Celular </string>
     <string name="prospect_locationDays_for_all">Toda la semana</string>
@@ -49,9 +48,9 @@
     <string name="add_prospects">Agregar Prospectos</string>
     <string name="initial_location_time">Inicio de Localización</string>
     <string name="final_location_time">Fin de Localización</string>
-    <string name="experience_in_group_credit">Experiencia en crédito grupal</string>
-    <string name="campaign">Campaña</string>
-    <string name="status">Estatus</string>
+    <string name="experience_in_group_credit">Experiencia en crédito grupal*</string>
+    <string name="campaign">Campaña*</string>
+    <string name="status">Estatus*</string>
     <string name="meta">Meta</string>
     <string name="carrera">Carrera</string>
     <string name="consultar_buro_de_credito">¿Quieres consultar el buró de crédito?</string>
@@ -68,12 +67,12 @@
     <string name="dialog.close">Close</string>
     <string name="dialog.error">Error</string>
     <string name="datos_cliente">Datos del Cliente</string>
-    <string name="direccion_cliente">Dirección del Cliente</string>
+    <string name="prospect_address_title">Dirección del Cliente</string>
     <string name="telefono_cliente">Teléfonos del Cliente</string>
     <string name="dias_localizacion">Días de Localización</string>
     <string name="datos_adicionales">Datos Adicionales</string>
-    <string name="prospect_contact">Número de contacto</string>
-    <string name="genere_client">Genero</string>
+    <string name="prospect_contact">Número de contacto*</string>
+
     <!--PROBLEMA SIN PERMISOS FIN-->
 
 </resources>

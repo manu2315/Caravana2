@@ -79,7 +79,7 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
     //Validar
     private AdicionalesProvider adicionalesProvider;
     private Validaciones validar, validar_no_obligatorios;
-    private String hora_inicial, hora_final, experiencia_credito_grupal,campana,estatus;
+    private String hora_inicial, hora_final, experiencia_credito_grupal="",campana="",estatus="";
     private boolean consultar_buro_de_credito;
     private ArrayList<String> dias_semana;
 
@@ -361,7 +361,7 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
         spinnerStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //String selectedItemText = (String) parent.getItemAtPosition(position);
+                String selectedItemText = (String) parent.getItemAtPosition(position);
                 // If user change the default selection
                 // First item is disable and it is used for hint
                 if (position > 0) {
@@ -369,7 +369,7 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
                     /*Toast.makeText
                             (getContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
                             .show();*/
-                    //estatus=selectedItemText;
+                    estatus=selectedItemText;
                 }
             }
 
@@ -388,9 +388,9 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
 
 
         validar= new Validaciones();
-        experiencia_credito_grupal=validar.checkValue(spinnerExperienceInGroupCredit);
-        campana=validar.checkValue(spinnerCampaign);
-        estatus=validar.checkValue(spinnerStatus);
+        experiencia_credito_grupal=validar.checkValue(experiencia_credito_grupal);
+        campana=validar.checkValue(campana);
+        estatus=validar.checkValue(estatus);
 
 
     }

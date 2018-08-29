@@ -25,8 +25,9 @@ public class Constantes {
     public static final String MESSAGE_DIALOG_ERROR="Message";
     public static final String ERROR_MESSAGE_CLIENT="Los datos de la petición son incorrectos por favor verifique: El apellido paterno, nombre y fecha de nacimiento.";
     public static final String ERROR_MESSAGE_EMAIL="El correo no es correcto, favor de validar.";
-    public static final String ERROR_MESSAGE_TELEPHONE="El teléfono de contacto es obligatorio.";
+    public static final String ERROR_MESSAGE_TELEPHONE="El tipo de teléfono y número de contacto es obligatorio.";
     public static final String ERROR_MESSAGE_ADDRESS="El nombre Dirección de calle,número exteiror y código postal son obligatorios.";
     public static final String ERROR_MESSAGE_ADITIONALS="La selección de los campos experiencia en crédito grupal,campaña y estatus son obligatorios, verifique sus datos.";
+    public static final String CAMPO_OBLIGATORIO="*";
 
 }

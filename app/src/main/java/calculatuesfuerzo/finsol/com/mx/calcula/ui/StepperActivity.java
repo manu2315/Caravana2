@@ -57,8 +57,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class StepperActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,StepperLayout.StepperListener, ClientDataFragment.OnFragmentInteractionListener,
-        ClientAddressFragment.OnFragmentInteractionListener,ClientTelephoneFragment.OnFragmentInteractionListener,ClientAdditionalDataFragment.OnFragmentInteractionListener,CompleteFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener,StepperLayout.StepperListener,
+        ClientDataFragment.OnFragmentInteractionListener, ClientAddressFragment.OnFragmentInteractionListener,
+        ClientTelephoneFragment.OnFragmentInteractionListener,ClientAdditionalDataFragment.OnFragmentInteractionListener,
+        CompleteFragment.OnFragmentInteractionListener {
 
     //SubtitleCollapsingToolbar
     SubtitleCollapsingToolbarLayout collapsingToolbarLayout;

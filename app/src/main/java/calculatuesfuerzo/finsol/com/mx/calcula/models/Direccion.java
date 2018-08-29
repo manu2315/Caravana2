@@ -8,7 +8,8 @@ public class Direccion extends Model {
     public Direccion() {
     }
 
-    public Direccion(String calle, String numeroExterior, String numeroInterior, String cp, String colonia, String correo) {
+    public Direccion(String calle, String numeroExterior, String numeroInterior, String cp,
+                     String colonia, String correo) {
         this.calle = calle;
         this.numeroExterior = numeroExterior;
         this.numeroInterior = numeroInterior;
