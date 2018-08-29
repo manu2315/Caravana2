@@ -35,8 +35,10 @@ import java.net.URL;
 
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
 import calculatuesfuerzo.finsol.com.mx.calcula.adapters.user.UserSingleton;
+import calculatuesfuerzo.finsol.com.mx.calcula.models.Adicionales;
 import calculatuesfuerzo.finsol.com.mx.calcula.models.Cliente;
 import calculatuesfuerzo.finsol.com.mx.calcula.models.Direccion;
+import calculatuesfuerzo.finsol.com.mx.calcula.models.Telefono;
 import calculatuesfuerzo.finsol.com.mx.calcula.providers.ClienteProvider;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientAdditionalDataFragment;
 import calculatuesfuerzo.finsol.com.mx.calcula.ui.fragments.ClientAddressFragment;
@@ -346,14 +348,15 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void fragmentClientAdditionalData() {
+    public void setTelefono(Telefono telefono) {
 
     }
 
     @Override
-    public void fragmentClientAddress() {
+    public void setAdicionales(Adicionales adicionales) {
 
     }
+
 
     @Override
     public void fragmentClientData() {

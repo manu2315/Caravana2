@@ -30,6 +30,8 @@ import calculatuesfuerzo.finsol.com.mx.calcula.R;
 import calculatuesfuerzo.finsol.com.mx.calcula.models.Telefono;
 import calculatuesfuerzo.finsol.com.mx.calcula.providers.TelefonoProvider;
 import calculatuesfuerzo.finsol.com.mx.calcula.providers.TelefonoProviderListenerImpl;
+import calculatuesfuerzo.finsol.com.mx.calcula.util.Constantes;
+import calculatuesfuerzo.finsol.com.mx.calcula.util.Util;
 import calculatuesfuerzo.finsol.com.mx.calcula.util.Validaciones;
 
 /**
@@ -242,6 +244,8 @@ public class ClientTelephoneFragment extends Fragment implements BlockingStep {
                     mListener.setTelefono(telefonoProvider.getTelefono());
                     callback.goToNextStep();
                 }
+                else
+                    Util.errorAlert(getFragmentManager(), Constantes.ERROR_MESSAGE_TELEPHONE);
             }
         },2000L);
     }

@@ -9,7 +9,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
@@ -17,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -29,7 +27,6 @@ import com.stepstone.stepper.VerificationError;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
 import calculatuesfuerzo.finsol.com.mx.calcula.models.Adicionales;
@@ -38,6 +35,7 @@ import calculatuesfuerzo.finsol.com.mx.calcula.providers.AdicionalesProviderList
 import calculatuesfuerzo.finsol.com.mx.calcula.util.Constantes;
 import calculatuesfuerzo.finsol.com.mx.calcula.util.MultiSpinner;
 import calculatuesfuerzo.finsol.com.mx.calcula.util.TimePickerFragment;
+import calculatuesfuerzo.finsol.com.mx.calcula.util.Util;
 import calculatuesfuerzo.finsol.com.mx.calcula.util.Validaciones;
 
 /**
@@ -80,7 +78,7 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
 
     //Validar
     private AdicionalesProvider adicionalesProvider;
-    private Validaciones validar;
+    private Validaciones validar, validar_no_obligatorios;
     private String hora_inicial, hora_final, experiencia_credito_grupal,campana,estatus;
     private boolean consultar_buro_de_credito;
     private ArrayList<String> dias_semana;
@@ -157,16 +155,19 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
 
 
         //diasArray
+        validar_no_obligatorios =new Validaciones();
         dias = new ArrayList<>(Arrays.asList(Constantes.DIAS_SEMANA));
         listener = new MultiSpinner.MultiSpinnerListener() {
             @Override
             public void onItemsSelected(boolean[] selected) {
-                Toast.makeText
+
+                dias_semana= validar_no_obligatorios.compareDaysSelected(selected);
+                /*Toast.makeText
                         (getContext(), "Lunes : " + selected[0] + " Martes : " + selected[1]
                                 + " Miercoles : " + selected[2] + " Jueves : " + selected[3]
                                 + " Viernes : " + selected[4] + " Sabado : " + selected[5]
                                 + " Domingo : " + selected[6], Toast.LENGTH_SHORT)
-                        .show();
+                        .show();*/
             }
         };
 
@@ -249,9 +250,10 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
                 // First item is disable and it is used for hint
                 if (position > 0) {
                     // Notify the selected item text
-                    Toast.makeText
+                    /*Toast.makeText
                             (getContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
-                            .show();
+                            .show();*/
+                    experiencia_credito_grupal=selectedItemText;
                 }
             }
 
@@ -307,9 +309,10 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
                 // First item is disable and it is used for hint
                 if (position > 0) {
                     // Notify the selected item text
-                    Toast.makeText
+                    /*Toast.makeText
                             (getContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
-                            .show();
+                            .show();*/
+                    campana=selectedItemText;
                 }
             }
 
@@ -358,14 +361,15 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
         spinnerStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItemText = (String) parent.getItemAtPosition(position);
+                //String selectedItemText = (String) parent.getItemAtPosition(position);
                 // If user change the default selection
                 // First item is disable and it is used for hint
                 if (position > 0) {
                     // Notify the selected item text
-                    Toast.makeText
+                    /*Toast.makeText
                             (getContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
-                            .show();
+                            .show();*/
+                    //estatus=selectedItemText;
                 }
             }
 
@@ -378,8 +382,15 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
     }
 
     private void checkValues() {
-        validar= new Validaciones();
+        //No obligatorios
+        hora_inicial=txtIntialTime.getText().toString();
+        hora_final=txtFinalTime.getText().toString();
 
+
+        validar= new Validaciones();
+        experiencia_credito_grupal=validar.checkValue(spinnerExperienceInGroupCredit);
+        campana=validar.checkValue(spinnerCampaign);
+        estatus=validar.checkValue(spinnerStatus);
 
 
     }
@@ -414,11 +425,14 @@ public class ClientAdditionalDataFragment extends Fragment implements BlockingSt
             public void run() {
                 checkValues();
                 if(validar.CORRECTO) {
-
-                    //falta provider
-                    //falta listener
+                    adicionalesProvider.setAdicionales(dias_semana,hora_inicial,
+                            hora_final,experiencia_credito_grupal,campana,
+                            estatus,consultar_buro_de_credito);
+                    mListener.setAdicionales(adicionalesProvider.getAdicionales());
                     callback.goToNextStep();
                 }
+                else
+                    Util.errorAlert(getFragmentManager(),Constantes.ERROR_MESSAGE_ADITIONALS);
             }
         },2000L);
     }

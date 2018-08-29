@@ -8,18 +8,25 @@ import android.support.v7.app.AlertDialog;
 
 import calculatuesfuerzo.finsol.com.mx.calcula.R;
 
-public class MyAlertDialogFragment extends DialogFragment {
+public class AlertDialogErrorFragment extends DialogFragment {
 
 
+    private String message;
+    private String title;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        message= getArguments() != null ? getArguments().getString(Constantes.MESSAGE_DIALOG_ERROR):"";
+
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage(R.string.dialog_message_client)
+        builder.setMessage(message)
                 .setTitle(R.string.dialog_error)
                 .setIcon(R.drawable.ic_close)
-                /*.setPositiveButton(R.string.fire, new DialogInterface.OnClickListener() {
+        /*builder.setMessage(R.string.dialog_message_client)
+                .setTitle(R.string.dialog_error)
+                .setIcon(R.drawable.ic_close)
+                .setPositiveButton(R.string.fire, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // FIRE ZE MISSILES!
                     }

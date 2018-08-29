@@ -14,6 +14,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.SubtitleCollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
@@ -310,5 +311,13 @@ public class Util {
 
             }
         });
+    }
+
+    public static void errorAlert(FragmentManager getFragmentManager,String message){
+        AlertDialogErrorFragment dialogErrorFragment = new AlertDialogErrorFragment();
+        Bundle args = new Bundle();
+        args.putString(Constantes.MESSAGE_DIALOG_ERROR,message);
+        dialogErrorFragment.setArguments(args);
+        dialogErrorFragment.show(getFragmentManager, "Error Alert");
     }
 }

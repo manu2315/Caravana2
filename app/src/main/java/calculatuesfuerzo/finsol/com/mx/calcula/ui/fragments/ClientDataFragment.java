@@ -27,8 +27,10 @@ import calculatuesfuerzo.finsol.com.mx.calcula.R;
 import calculatuesfuerzo.finsol.com.mx.calcula.models.Cliente;
 import calculatuesfuerzo.finsol.com.mx.calcula.providers.ClienteProvider;
 import calculatuesfuerzo.finsol.com.mx.calcula.providers.ClienteProviderListenerImpl;
+import calculatuesfuerzo.finsol.com.mx.calcula.util.Constantes;
 import calculatuesfuerzo.finsol.com.mx.calcula.util.DatePickerFragment;
-import calculatuesfuerzo.finsol.com.mx.calcula.util.MyAlertDialogFragment;
+import calculatuesfuerzo.finsol.com.mx.calcula.util.AlertDialogErrorFragment;
+import calculatuesfuerzo.finsol.com.mx.calcula.util.Util;
 import calculatuesfuerzo.finsol.com.mx.calcula.util.Validaciones;
 
 /**
@@ -217,11 +219,11 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
     private boolean checkValues(EditText editText){
          return checkValues(editText.getText().toString());
     }*/
-    private void errorAlert(){
-        MyAlertDialogFragment dialogFragment = new MyAlertDialogFragment();
+   /* private void errorAlert(){
+        AlertDialogErrorFragment dialogFragment = new AlertDialogErrorFragment();
         dialogFragment.show(getFragmentManager(), "Error Alert");
 
-    }
+    }*/
     private void checkValues(){
 
         validar =new Validaciones();
@@ -308,7 +310,8 @@ public class ClientDataFragment extends Fragment implements BlockingStep {
                     callback.goToNextStep();
                 }
                 else{
-                    errorAlert();
+                    //errorAlert();
+                    Util.errorAlert(getFragmentManager(), Constantes.ERROR_MESSAGE_CLIENT);
                 }
 
 

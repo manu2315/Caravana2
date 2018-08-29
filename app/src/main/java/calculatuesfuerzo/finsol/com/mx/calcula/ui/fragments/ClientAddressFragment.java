@@ -30,6 +30,8 @@ import calculatuesfuerzo.finsol.com.mx.calcula.R;
 import calculatuesfuerzo.finsol.com.mx.calcula.models.Direccion;
 import calculatuesfuerzo.finsol.com.mx.calcula.providers.DireccionProvider;
 import calculatuesfuerzo.finsol.com.mx.calcula.providers.DireccionProviderListenerImpl;
+import calculatuesfuerzo.finsol.com.mx.calcula.util.Constantes;
+import calculatuesfuerzo.finsol.com.mx.calcula.util.Util;
 import calculatuesfuerzo.finsol.com.mx.calcula.util.Validaciones;
 
 /**
@@ -232,6 +234,8 @@ public class ClientAddressFragment extends Fragment implements BlockingStep {
                     mListener.setDireccion(direccionProvider.getDireccion());
                     callback.goToNextStep();
                 }
+                else
+                    Util.errorAlert(getFragmentManager(), Constantes.ERROR_MESSAGE_ADDRESS);
             }
         },2000L);
     }
